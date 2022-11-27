@@ -9,12 +9,12 @@
 │   │   ├── bannedUsername.js
 │   │   ├── encryptor.js
 │   │   └── errorHandler.js
-│   ├── models: =====> classes
+│   ├── models =====> classes
 │   │   └── User.js
-│   ├── routes: =====> routes and apis
+│   ├── routes =====> routes and apis
 │   │   ├── router.js
 │   │   └── users.js
-│   ├── services: =====> Database
+│   ├── services =====> Database
 │   │   ├── DAO.js
 │   │   ├── dbMongo.js
 │   │   └── mongoose =====> Mongoose Schema
