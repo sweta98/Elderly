@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="/css/bulma.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/login.css" />
+    
+    <title>Facility Genie</title>
+
+  </head>
+  <body>
+      <div class="bgimg"></div>
+      <div class="login-container">
+        <main class="login-main">
+            <img class="icon" src="/img/tartans.png">
+            <h3>Emergency</h3>
+            <h3>Social Network</h3>
+            <form id="login-form" onsubmit="return false">
+                <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    placeholder="Username"
+                    autocomplete="off"
+                    required
+                />
+                <br>
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="Password"
+                    required
+                />
+                <br>
+                <button  type="submit" id="join-button" class="btn">Join</button>
+                
+            </form>
+
+        </main>
+
+        <div id="modal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header id = "modal-header" class="modal-card-head">
+                  <p id="modal-title" class="modal-card-title has-text-left"></p>
+                  <button id="modal-btn-close" class="delete" aria-label="close" onclick="closeModal()"></button>
+                </header>
+                <section class="modal-card-body">
+                  <p id="modal-text"></p>
+                </section>
+                <footer id="modal-footer-confirm" class="modal-card-foot buttons is-right" hidden>
+                  <button id="modal-btn-confirm" class="button is-success">Confirm</button>
+                  <button class="button" onclick="closeModal()">Cancel</button>
+                </footer>
+                <footer id="modal-footer-continue" class="modal-card-foot buttons is-right" hidden>
+                  <button id="modal-btn-continue" class="button is-success">I Understand</button>
+                </footer>
+            </div>
+        </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- Modal Control-->
+    <script type="text/javascript" src="/utils/modal.js"></script>
+    <!-- Auth Javascript -->
+    <script src="/js/axios.min.js"></script>
+    <script type="text/javascript" src="/utils/axios-interceptors.js"></script>
+    <script type="module" src="/utils/login.js"></script>
+  </body>
+</html>
