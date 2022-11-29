@@ -72,3 +72,9 @@ body {
 .button-inactive{
     color: #000;
 }
+
+.btn-group-vertical.center {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
