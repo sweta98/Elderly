@@ -8,24 +8,38 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 
 <nav class="navbar fixed-top navbar-light bg-light">
-    <h2 class="navbar-brand mb-0">Facility Genie</h2>
+    <h2 class="navbar-brand mb-0">
+        Facility Genie
+    </h2>
+    <!-- <img src="img/logo.png" style="height: 50px;"> -->
     <button id="logout" type="button" class="btn btn-secondary">
-        <i class="material-icons">logout</i>
-        <span>Logout</span>
+        <span>
+            <i class="material-icons" style="float: left;">logout</i>
+            Logout
+        </span>
     </button>
 </nav>
 
 <div class="container-fluid">
-    <div id="page-home">
+    <div id="userinfo-container">
+        <img id="user-image" src="img/tartans.png">
+        <h2>Boe</h2>
+    </div>
+    <div id="home-buttons-container">
         <div class="btn-group-vertical center">
-            <button type="button" class="btn btn-primary btn-lg btn-block">My WishBoard</button>
-            <button type="button" class="btn btn-primary btn-lg btn-block">Tutorials</button>
-            <button type="button" class="btn btn-primary btn-lg btn-block">Events</button>
+            <button type="button" class="btn btn-lg btn-block">My WishBoard</button>
+        </div>
+        <div class="btn-group-vertical center">
+            <button type="button" class="btn btn-lg btn-block">Tutorials</button>
+        </div>
+        <div class="btn-group-vertical center">
+            <button type="button" class="btn btn-lg btn-block">Events</button>
         </div>
     </div>
 

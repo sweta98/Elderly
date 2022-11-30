@@ -6,6 +6,7 @@ html {
 body {
     margin-bottom: 80px;
     margin-top: 60px;
+    font-family: 'Open Sans';
 }
 
 .footer {
@@ -22,6 +23,23 @@ body {
 .navbar{
     border-top: 1px solid transparent;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.container-fluid {
+    text-align: center;
+    height:50vh;
+}
+
+#userinfo-container {
+    position: relative;
+    top:30%;
+    transform:translateY(-50%);
+}
+
+#home-buttons-container{
+    position: relative;
+    top:40%;
+    transform:translateY(-50%);
 }
 
 .group-container{
@@ -65,16 +83,38 @@ body {
     font-size: 0.8rem;
 }
 
+.btn {
+    background-color: #C5D8D1;
+    font-style: normal;
+    font-weight: 700;
+    color: #12263A;
+    text-align: center;
+    border: 0;
+    border-radius: 15px;
+}
+
 .button-active, .selectors button:hover, .selectors button:active, .selectors button:focus{
-    color: #ff0000;
+    color: #697821;
 }
 
 .button-inactive{
-    color: #000;
+    color: #12263A;
 }
 
 .btn-group-vertical.center {
-    display: block;
-    margin: 0 auto;
+    width: 80%;
+    margin-top: 30px;
     text-align: center;
+}
+
+.btn-group-vertical.center button:active, .btn-group-vertical.center button:hover {
+    background-color:#697821;
+    color: white
+}
+
+#user-image {
+    height: 40%;
+    width: 40%;
+    max-height: 200px;
+    max-width: 200px;
 }
