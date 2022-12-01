@@ -20,22 +20,9 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.post('/', async (req, res) => {
-    try{
-        console.log(req.body);
-        var newEvent = new Event(req.body);
-        newEvent = await newEvent.save();
-
-        //TODO do we need to return the newly created event?
-        res.status(201).json(newEvent);
-    }catch(err){
-        handleError(err, res, 400);
-    }
-})
-
 router.patch('/:eventID', async (req, res) =>{
     try{
-        let result = await Event.update(req.params.eventID, req.body.username);
+        let result = await Event.update(req.params.eventID, req.body);
 
         //TODO do we need to return the newly updated event?
         res.status(201).json(result);
@@ -44,6 +31,18 @@ router.patch('/:eventID', async (req, res) =>{
         // if err...
         // 404, 400, 500
         handleError(err, res, 500);
+    }
+})
+
+router.post('/', async (req, res) => {
+    try{
+        var newEvent = new Event(req.body);
+        newEvent = await newEvent.save();
+
+        //TODO do we need to return the newly created event?
+        res.status(201).json(newEvent);
+    }catch(err){
+        handleError(err, res, 400);
     }
 })
 

@@ -13,6 +13,6 @@ router.get('/', (req, res) => {
     APIs
 */
 router.use('/api/users', require('./users'))
-router.use('/api/events', require('./events'))
+router.use('/events', require('./events'))
 
 module.exports = router

@@ -23,7 +23,7 @@ const EventSchema = new mongoose.Schema({
         required: true
     },
     end_time:{
-        type: Boolean,
+        type: String,
         required: true
     },
     rsvp:{

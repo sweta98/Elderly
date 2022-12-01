@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const encryptor = require('../controllers/encryptor')
 const DBURL = "mongodb+srv://sridelderly:18658svgenie@maincluster.ovf8aqy.mongodb.net/?retryWrites=true&w=majority"
+const  ObjectId = require('mongodb').ObjectId;
 
 class DBMongo {
     constructor() {
@@ -65,7 +66,7 @@ class DBMongo {
     addUserToEvent(eventID, username){
         try{
             return this.Event.updateOne(
-                { _id: eventID},
+                { _id: ObjectId(eventID)},
                 { $push: {rsvp: username}});
         } catch(err){
             throw err;
@@ -76,7 +77,7 @@ class DBMongo {
     deleteUserfromEvent(eventID, username){
         try{
             return this.Event.updateOne(
-                { _id: eventID},
+                { _id: ObjectId(eventID)},
                 { $pull: {rsvp: username}});
         } catch(err){
             throw err;
