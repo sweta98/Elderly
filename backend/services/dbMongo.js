@@ -15,6 +15,10 @@ class DBMongo {
         .catch(err => console.error('Main Database refused to connect：', err));
 
         this.User = require('./mongoose/userModel');
+
+        //Require eventModel
+        this.Event = require('./mongoose/eventModel');
+
     }
 
     async stopAllConnections() {
@@ -31,6 +35,24 @@ class DBMongo {
         return true;
 
     }
+    
+    /*  EVENT  */
+    addEvent(event){ 
+        //TODO
+    }
+
+    getAllEvents(){
+        //TODO
+    }
+    
+    addUserToEvent(eventID, username){
+        //TODO
+    }
+
+    deleteUserfromEvent(eventID, username){
+        //TODO
+    }
+
 
     /*  USER  */
 

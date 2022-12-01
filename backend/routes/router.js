@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const CWD = process.env.INIT_CWD
-
 /*
     URLs
 */
@@ -14,5 +13,6 @@ router.get('/', (req, res) => {
     APIs
 */
 router.use('/api/users', require('./users'))
+router.use('/api/events', require('./events'))
 
 module.exports = router
