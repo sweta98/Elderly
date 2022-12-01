@@ -89,6 +89,23 @@ class DBMongo {
       throw err;
     }
   }
+  updateNeed(params, data) {
+    const filter = {};
+    if (data.status) {
+      filter["status"] = data.status;
+    }
+    if (data.priority) {
+      filter["priority"] = data.priority;
+    }
+    try {
+      return this.Needs.updateOne(
+        { resident: params.resident, need: params.need },
+        filter
+      );
+    } catch (err) {
+      throw err;
+    }
+  }
 }
 
 module.exports = DBMongo;

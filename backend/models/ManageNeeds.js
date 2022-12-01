@@ -28,8 +28,8 @@ class Needs {
       status: "New",
     });
   }
-  static update(username, patch) {
-    return Needs.db.updateNeed(username, patch);
+  static update(params, patch) {
+    return Needs.db.updateNeed(params, patch);
   }
 
   static getAll() {

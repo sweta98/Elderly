@@ -13,7 +13,7 @@ router.get("/", async (_req, res) => {
 
 router.put("/:resident/:need", async (req, res) => {
   try {
-    let need = await ManageNeeds.update(req.params.username, req.body);
+    let need = await ManageNeeds.update(req.params, req.body);
     res.json(need);
   } catch (err) {
     handleError(err, res, 500);
