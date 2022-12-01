@@ -35,51 +35,52 @@ class DBMongo {
         return true;
 
     }
-    
+
     /*  EVENT  */
     addEvent(event){ 
-        //TODO
-    }
-
-    getAllEvents(){
-        //TODO
-    }
-    
-    addUserToEvent(eventID, username){
-        //TODO
-    }
-
-    deleteUserfromEvent(eventID, username){
-        //TODO
-    }
-
-
-    /*  USER  */
-
-    addUser(user) {
-        const newUser = new this.User({
-            username: user.username,
-            role: user.role,
-            status: user.status
+        const newEvent = new this.Event({
+            title: event.title,
+            description: event.description,
+            location: event.location,
+            date: event.date,
+            start_time: event.start_time,
+            end_time: event.end_time
         });
-        newUser.setPassword(user.password);
         try {
-            return newUser.save()
+            return newEvent.save()
         } catch (err) {
             throw err;
         }
     }
 
-    validateUser(username, password) {
-        return this.User.findOne({ username: username})
-            .then(user => {
-                if (!user || !user.validPassword(password)) {
-                    throw { message: 'Authentication failed. Invalid user or password.' };
-                }
-                return user;
+    getAllEvents(){
+        return this.Event.find({})
+            .then(events => {
+                return events;
             }).catch(err => {
                 throw err;
-            });
+            })
+    }
+    
+    addUserToEvent(eventID, username){
+        try{
+            return this.Event.updateOne(
+                { _id: eventID},
+                { $push: {rsvp: username}});
+        } catch(err){
+            throw err;
+        }
+
+    }
+
+    deleteUserfromEvent(eventID, username){
+        try{
+            return this.Event.updateOne(
+                { _id: eventID},
+                { $pull: {rsvp: username}});
+        } catch(err){
+            throw err;
+        }
     }
 }
 

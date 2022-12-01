@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
 
 router.patch('/:eventID', async (req, res) =>{
     try{
-        let result = await Event.update(req.params.eventID, req.body);
+        let result = await Event.update(req.params.eventID, req.body.username);
 
         //TODO do we need to return the newly updated event?
         res.status(201).json(result);
