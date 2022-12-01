@@ -7,7 +7,8 @@ WISH:
 */
 const WishSchema = new mongoose.Schema({
     userid:{
-        type: mongoose.Types.ObjectId,
+        // type: mongoose.Types.ObjectId, TODO: changed back when User feature complete
+        type: String,
         ref: 'User',
         required: true
     },

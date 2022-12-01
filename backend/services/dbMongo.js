@@ -64,7 +64,8 @@ class DBMongo {
     /* Wish */
     addWish(wish) {
         const newWish = new this.Wish({
-            userid: mongoose.Types.ObjectId(wish.userid),
+            // userid: mongoose.Types.ObjectId(wish.userid), TODO: change back when User feature complete
+            userid: wish.userid,
             content: wish.content,
             timestamp: wish.timestamp,
             status: "wished",
@@ -78,8 +79,8 @@ class DBMongo {
 
     getAllWish() {
         return this.Wish.find()
-            .select("userid content time")
-            .populate("userid", "username")
+            .select("userid content timestamp")
+            // .populate("userid", "username")
             .sort({ "time": -1 })
             .then(wishes => {
                 return wishes
