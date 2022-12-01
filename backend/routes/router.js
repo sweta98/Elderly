@@ -14,5 +14,6 @@ router.get('/', (req, res) => {
     APIs
 */
 router.use('/api/users', require('./users'))
+router.use('/api/wishes', require('./wishes'))
 
 module.exports = router

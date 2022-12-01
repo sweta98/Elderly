@@ -21,11 +21,11 @@ const WishSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        required: true
+        default: "wished"
     },
     priority: {
         type: String,
-        required: true
+        // required: true
     },
 
 

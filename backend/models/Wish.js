@@ -4,7 +4,6 @@ class Wish{
     constructor(wish){
         this.userid  = wish.userid;
         this.content = wish.content;
-        this.status = "Wished";
     }
 
     static get db(){
@@ -13,11 +12,11 @@ class Wish{
 
     save(){
         return Wish.db.addWish({
-            userid: wish.userid,
-            content: wish.content,
-            status: wish.status,
-            timestamp: wish.timestamp,
-            priority: wish.priority,
+            userid: this.userid,
+            content: this.content,
+            // status: this.status,
+            // timestamp: this.timestamp,
+            // priority: this.priority,
         });
     }
 
