@@ -15,6 +15,7 @@ class DBMongo {
         .catch(err => console.error('Main Database refused to connect：', err));
 
         this.User = require('./mongoose/userModel');
+        this.Wish = require('./mongoose/wishModel')
     }
 
     async stopAllConnections() {
@@ -58,6 +59,43 @@ class DBMongo {
             }).catch(err => {
                 throw err;
             });
+    }
+
+    /* Wish */
+    addWish(wish) {
+        const newWish = new this.Wish({
+            userid: mongoose.Types.ObjectId(wish.userid),
+            content: wish.content,
+            timestamp: wish.timestamp,
+            status: "wished",
+        });
+        try {
+            return newWish.save()
+        } catch (err) {
+            throw { status: 501, message: err };
+        }
+    }
+
+    getAllWish() {
+        return this.Wish.find()
+            .select("userid content time")
+            .populate("userid", "username")
+            .sort({ "time": -1 })
+            .then(wishes => {
+                return wishes
+            }).catch(err => {
+                throw err;
+            })
+    }
+
+    paginateWish(query, options) {
+        return this.Wish.paginate({ content: { $regex: query.query, $options: 'i' } }, options)
+            .then(results => {
+                return results
+            })
+            .catch(err => {
+                throw err;
+            })
     }
 }
 
