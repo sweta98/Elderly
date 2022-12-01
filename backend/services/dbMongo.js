@@ -84,11 +84,11 @@ class DBMongo {
 
   getAllNeeds() {
     try {
-        return this.Needs.findAll();
+      return this.Needs.find();
+    } catch (err) {
+      throw err;
     }
   }
-
-  
 }
 
 module.exports = DBMongo;

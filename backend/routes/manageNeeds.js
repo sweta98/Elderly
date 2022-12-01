@@ -19,3 +19,14 @@ router.put("/:resident/:need", async (req, res) => {
     handleError(err, res, 500);
   }
 });
+
+router.post("/", async (req, res) => {
+  try {
+    let need = await ManageNeeds.saveNeed(req.body);
+    res.json(need);
+  } catch (err) {
+    handleError(err, res, 500);
+  }
+});
+
+module.exports = router;

@@ -20,6 +20,14 @@ class Needs {
     });
   }
 
+  static saveNeed(need) {
+    return Needs.db.addNeed({
+      resident: need.resident,
+      need: need.need,
+      priority: "Undefined",
+      status: "New",
+    });
+  }
   static update(username, patch) {
     return Needs.db.updateNeed(username, patch);
   }
