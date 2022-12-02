@@ -17,7 +17,7 @@ router.get("/manageNeeds", (req, res) => {
     APIs
 */
 router.use("/api/users", require("./users"));
-router.use('/api/tutorials', require('./tutorials'));
+router.use("/", require("./tutorials"));
 router.use("/api/manageNeeds", require("./manageNeeds"));
 
 module.exports = router;
