@@ -65,27 +65,7 @@
             data-parent="#accordion"
           >
             <div class="card-body">
-              <table class="needs-table">
-                <tr>
-                  <th>Resident</th>
-                  <th>Request</th>
-                  <th>Edit</th>
-                </tr>
-                <tr>
-                  <td>Boe</td>
-                  <td>Glasses</td>
-                  <td>
-                    <button class="edit-button">
-                      <img id="edit-image" src="img/edit.png" />
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Joe</td>
-                  <td>Coffee Machine</td>
-                  <td><button>edit</button></td>
-                </tr>
-              </table>
+              <table class="new-needs-table"></table>
             </div>
           </div>
         </div>
@@ -113,23 +93,7 @@
             data-parent="#accordion"
           >
             <div class="card-body">
-              <table class="needs-table">
-                <tr>
-                  <th>Resident</th>
-                  <th>Request</th>
-                  <th>Edit</th>
-                </tr>
-                <tr>
-                  <td>Boe</td>
-                  <td>Glasses</td>
-                  <td><button>edit</button></td>
-                </tr>
-                <tr>
-                  <td>Joe</td>
-                  <td>Coffee Machine</td>
-                  <td><button>edit</button></td>
-                </tr>
-              </table>
+              <table class="in-progress-needs-table"></table>
             </div>
           </div>
         </div>
@@ -157,23 +121,7 @@
             data-parent="#accordion"
           >
             <div class="card-body">
-              <table class="needs-table">
-                <tr>
-                  <th>Resident</th>
-                  <th>Request</th>
-                  <th>Edit</th>
-                </tr>
-                <tr>
-                  <td>Boe</td>
-                  <td>Glasses</td>
-                  <td><button>edit</button></td>
-                </tr>
-                <tr>
-                  <td>Joe</td>
-                  <td>Coffee Machine</td>
-                  <td><button>edit</button></td>
-                </tr>
-              </table>
+              <table class="completed-needs-table"></table>
             </div>
           </div>
         </div>
@@ -237,7 +185,8 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
-
-    <script src="js/manageNeeds.js"></script>
+    <script src="utils/http.js"></script>
+    <script src="utils/api.js"></script>
+    <script src="utils/manageNeeds.js"></script>
   </body>
 </html>
