@@ -11,7 +11,7 @@ const displayNewNeeds = (newNeeds) => {
     <td>${newNeeds[i].resident}</td>
     <td>${newNeeds[i].need}</td>
     <td>
-      <button class="edit-button">
+      <button class="edit-button" data-toggle="modal" data-target="#exampleModal">
         <img id="edit-image" src="img/edit.png" />
       </button>
     </td>
@@ -34,7 +34,7 @@ const displayInProgressNeeds = (inProgressNeeds) => {
       <td>${inProgressNeeds[i].resident}</td>
       <td>${inProgressNeeds[i].need}</td>
       <td>
-        <button class="edit-button">
+        <button class="edit-button" data-toggle="modal" data-target="#exampleModal">
           <img id="edit-image" src="img/edit.png" />
         </button>
       </td>
@@ -57,7 +57,7 @@ const displayCompletedNeeds = (completedNeeds) => {
         <td>${completedNeeds[i].resident}</td>
         <td>${completedNeeds[i].need}</td>
         <td>
-          <button class="edit-button">
+          <button class="edit-button" data-toggle="modal" data-target="#exampleModal">
             <img id="edit-image" src="img/edit.png" />
           </button>
         </td>
