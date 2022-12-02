@@ -20,10 +20,11 @@ router.get('/wishes', (req, res) => {
     res.sendFile(CWD + '/frontend/views/wishboard.html')
 })
 
-/* 
+/*
     APIs
 */
-router.use('/api/users', require('./users'))
+router.use("/api/users", require("./users"));
+router.use('/api/tutorials', require('./tutorials'));
 router.use('/api/wishes', require('./wishes'))
 router.use("/api/manageNeeds", require("./manageNeeds"));
 router.use('/api/events', require('./events'))
