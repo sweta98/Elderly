@@ -6,8 +6,14 @@ const CWD = process.env.INIT_CWD
     URLs
 */
 // home get example
-router.get('/', (req, res) => {
-    res.sendFile(CWD + '/frontend/views/index.html')
+router.get("/", (req, res) => {
+    res.sendFile(CWD + "/frontend/views/index.html");
+  });
+  router.get("/manageNeeds", (req, res) => {
+    res.sendFile(CWD + "/frontend/views/manageNeeds.html");
+  });
+  router.get('/events', (req, res) => {
+    res.sendFile(CWD + '/frontend/views/rsvpEvent.html')
 })
 
 router.get('/wishes', (req, res) => {
@@ -19,5 +25,8 @@ router.get('/wishes', (req, res) => {
 */
 router.use('/api/users', require('./users'))
 router.use('/api/wishes', require('./wishes'))
+router.use("/api/manageNeeds", require("./manageNeeds"));
+router.use('/api/events', require('./events'))
 
-module.exports = router
+module.exports = router;
+

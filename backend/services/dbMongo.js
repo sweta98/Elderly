@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const encryptor = require('../controllers/encryptor')
 const DBURL = "mongodb+srv://sridelderly:18658svgenie@maincluster.ovf8aqy.mongodb.net/?retryWrites=true&w=majority"
+const  ObjectId = require('mongodb').ObjectId;
 
 class DBMongo {
     constructor() {
@@ -16,6 +17,9 @@ class DBMongo {
 
         this.User = require('./mongoose/userModel');
         this.Wish = require('./mongoose/wishModel')
+        this.User = require("./mongoose/userModel");
+        this.Needs = require("./mongoose/needsModel");
+        this.Event = require('./mongoose/eventModel');
     }
 
     async stopAllConnections() {
@@ -49,55 +53,141 @@ class DBMongo {
         }
     }
 
-    validateUser(username, password) {
-        return this.User.findOne({ username: username})
-            .then(user => {
-                if (!user || !user.validPassword(password)) {
-                    throw { message: 'Authentication failed. Invalid user or password.' };
-                }
-                return user;
-            }).catch(err => {
-                throw err;
-            });
-    }
-
-    /* Wish */
-    addWish(wish) {
-        const newWish = new this.Wish({
-            // userid: mongoose.Types.ObjectId(wish.userid), TODO: change back when User feature complete
-            userid: wish.userid,
-            content: wish.content,
-            timestamp: wish.timestamp,
-            status: "wished",
-        });
-        try {
-            return newWish.save()
-        } catch (err) {
-            throw { status: 501, message: err };
+  validateUser(username, password) {
+    return this.User.findOne({ username: username })
+      .then((user) => {
+        if (!user || !user.validPassword(password)) {
+          throw { message: "Authentication failed. Invalid user or password." };
         }
-    }
+        return user;
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
 
-    getAllWish() {
-        return this.Wish.find()
-            .select("userid content timestamp")
-            // .populate("userid", "username")
-            .sort({ "time": -1 })
-            .then(wishes => {
-                return wishes
-            }).catch(err => {
-                throw err;
-            })
-    }
+  /* MANAGE NEEDS */
 
-    paginateWish(query, options) {
-        return this.Wish.paginate({ content: { $regex: query.query, $options: 'i' } }, options)
-            .then(results => {
-                return results
-            })
-            .catch(err => {
-                throw err;
-            })
+  addNeed(need) {
+    const newNeed = new this.Needs({
+      resident: need.resident,
+      need: need.need,
+      priority: need.priority,
+      status: need.status,
+    });
+    try {
+      return newNeed.save();
+    } catch (err) {
+      throw err;
     }
+  }
+
+  getAllNeeds() {
+    try {
+      return this.Needs.find();
+    } catch (err) {
+      throw err;
+    }
+  }
+  updateNeed(params, data) {
+    const filter = {};
+    if (data.status) {
+      filter["status"] = data.status;
+    }
+    if (data.priority) {
+      filter["priority"] = data.priority;
+    }
+    try {
+      return this.Needs.updateOne(
+        { resident: params.resident, need: params.need },
+        filter
+      );
+    } catch (err) {
+      throw err;
+    }
+  }
+  deleteUserfromEvent(eventID, username){
+    try{
+        return this.Event.updateOne(
+            { _id: ObjectId(eventID)},
+            { $pull: {rsvp: username}});
+    } catch(err){
+        throw err;
+    }
+  }
+  /* Wish */
+  addWish(wish) {
+      const newWish = new this.Wish({
+          // userid: mongoose.Types.ObjectId(wish.userid), TODO: change back when User feature complete
+          userid: wish.userid,
+          content: wish.content,
+          timestamp: wish.timestamp,
+          status: "wished",
+      });
+      try {
+          return newWish.save()
+      } catch (err) {
+          throw { status: 501, message: err };
+      }
+  }
+
+  getAllWish() {
+      return this.Wish.find()
+          .select("userid content timestamp")
+          // .populate("userid", "username")
+          .sort({ "time": -1 })
+          .then(wishes => {
+              return wishes
+          }).catch(err => {
+              throw err;
+          })
+  }
+
+  paginateWish(query, options) {
+      return this.Wish.paginate({ content: { $regex: query.query, $options: 'i' } }, options)
+          .then(results => {
+              return results
+          })
+          .catch(err => {
+              throw err;
+          })
+  }
+
+getAllEvents(){
+  return this.Event.find({})
+      .then(events => {
+          return events;
+      }).catch(err => {
+          throw err;
+      })
+}
+
+addUserToEvent(eventID, username){
+  try{
+      return this.Event.updateOne(
+          { _id: ObjectId(eventID)},
+          { $push: {rsvp: username}});
+  } catch(err){
+      throw err;
+  }
+
+}
+    /*  EVENT  */
+    addEvent(event){ 
+      const newEvent = new this.Event({
+          title: event.title,
+          description: event.description,
+          location: event.location,
+          date: event.date,
+          start_time: event.start_time,
+          end_time: event.end_time
+      });
+      try {
+          return newEvent.save()
+      } catch (err) {
+          throw err;
+      }
+  }
 }
 
 module.exports = DBMongo;

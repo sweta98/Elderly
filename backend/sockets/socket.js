@@ -43,6 +43,7 @@ function onConnect(socket) {
         socket.emit('updateNotify')
     })
 
+    //EVENT SOCKET TODO
 }
 
 
