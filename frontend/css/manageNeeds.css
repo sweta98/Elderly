@@ -118,11 +118,16 @@ body {
   color: white;
 }
 
-#user-image {
-  height: 40%;
-  width: 40%;
-  max-height: 200px;
-  max-width: 200px;
+#edit-image {
+  height: 50%;
+  width: 50%;
+  max-height: 40px;
+  max-width: 40px;
+}
+
+.edit-button {
+  border: none;
+  background-color: white;
 }
 .heading {
   float: left;
