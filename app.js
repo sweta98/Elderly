@@ -14,6 +14,9 @@ const PORT = process.env.PORT || 8080
 // });
 
 // Setup view engine
+app.set("view-engine", "ejs");
+
+// Parse JSON requests into req.body
 app.use(express.json()) 
 
 // Setup routes
