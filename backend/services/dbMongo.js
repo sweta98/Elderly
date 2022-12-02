@@ -15,6 +15,7 @@ class DBMongo {
         .catch(err => console.error('Main Database refused to connect：', err));
 
         this.User = require('./mongoose/userModel');
+        this.Tutorial = require('./mongoose/tutorialModel');
     }
 
     async stopAllConnections() {
@@ -58,6 +59,42 @@ class DBMongo {
             }).catch(err => {
                 throw err;
             });
+    }
+
+
+    /* TUTORIAL */
+
+    addTutorial(tutorial) {
+        const newTutorial = new this.Tutorial({
+            app: tutorial.app,
+            videoId: tutorial.videoId,
+            enabled: tutorial.enabled
+        });
+        try {
+            return newTutorial.save()
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    getTutorial(appName) {
+        return this.Tutorial.findOne({ app: appName });
+    }
+
+    getAllTutorial() {
+        return this.Tutorial.find().sort( {app: "asc"} );
+    }
+
+    getAllEnabledTutorial() {
+        return this.Tutorial.find({ enabled: true }).sort( {app: "asc"} );
+    }
+
+    enableTutorial(appName) {
+        return this.Tutorial.findOneAndUpdate({ app: appName }, { enabled: true }, { new: true });
+    }
+
+    disableTutorial(appName) {
+        return this.Tutorial.findOneAndUpdate({ app: appName }, { enabled: false }, { new: true });
     }
 }
 
