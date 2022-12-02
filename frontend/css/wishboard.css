@@ -1,0 +1,33 @@
+.container-fluid {
+    height: 100%;
+}
+.wishboard-container {
+    margin: 15% auto;
+}
+.wish-in-progress {
+    background-color: #FEFFC0;
+}
+.wish-completed {
+    background-color: #ABFFB8;
+}
+.wish-wished {
+    background-color: #FFCECE;
+}
+.wish-item {
+    margin-top: 20px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 10px;
+}
+.wish-item-content {
+    width: 25%;
+}
+.wish-item-time {
+    width: 25%;
+}
+.wish-item-status {
+    width: 40%;
+}
+.btn-container {
+    margin-top:10%;
+}

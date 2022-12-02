@@ -10,6 +10,10 @@ router.get('/', (req, res) => {
     res.sendFile(CWD + '/frontend/views/index.html')
 })
 
+router.get('/wishes', (req, res) => {
+    res.sendFile(CWD + '/frontend/views/wishboard.html')
+})
+
 /* 
     APIs
 */
