@@ -19,7 +19,8 @@ router.get("/", (req, res) => {
 /* 
     APIs
 */
-router.use('/api/users', require('./users'))
+router.use("/api/users", require("./users"));
+router.use('/api/tutorials', require('./tutorials'));
 router.use("/api/manageNeeds", require("./manageNeeds"));
 router.use('/api/events', require('./events'))
 

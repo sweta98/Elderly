@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const encryptor = require('../controllers/encryptor')
 const DBURL = "mongodb+srv://sridelderly:18658svgenie@maincluster.ovf8aqy.mongodb.net/?retryWrites=true&w=majority"
-const  ObjectId = require('mongodb').ObjectId;
+const ObjectId = require('mongodb').ObjectId;
 
 class DBMongo {
     constructor() {
@@ -11,12 +11,13 @@ class DBMongo {
         }
 
         // Connect to the main DB
-        mongoose.connect(DBURL).then(() => 
-        console.log(`Main Database Connected: ${DBURL}`))
-        .catch(err => console.error('Main Database refused to connect：', err));
+        mongoose.connect(DBURL).then(() =>
+            console.log(`Main Database Connected: ${DBURL}`))
+            .catch(err => console.error('Main Database refused to connect：', err));
 
         this.User = require("./mongoose/userModel");
         this.Needs = require("./mongoose/needsModel");
+        this.Tutorial = require('./mongoose/tutorialModel');
         this.Event = require('./mongoose/eventModel');
     }
 
@@ -51,103 +52,143 @@ class DBMongo {
         }
     }
 
-  validateUser(username, password) {
-    return this.User.findOne({ username: username })
-      .then((user) => {
-        if (!user || !user.validPassword(password)) {
-          throw { message: "Authentication failed. Invalid user or password." };
-        }
-        return user;
-      })
-      .catch((err) => {
-        throw err;
-      });
-  }
+    validateUser(username, password) {
+        return this.User.findOne({ username: username })
+            .then((user) => {
+                if (!user || !user.validPassword(password)) {
+                    throw { message: "Authentication failed. Invalid user or password." };
+                }
+                return user;
+            })
+            .catch((err) => {
+                throw err;
+            });
+    }
 
-  /* MANAGE NEEDS */
-
-  addNeed(need) {
-    const newNeed = new this.Needs({
-      resident: need.resident,
-      need: need.need,
-      priority: need.priority,
-      status: need.status,
-    });
-    try {
-      return newNeed.save();
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  getAllNeeds() {
-    try {
-      return this.Needs.find();
-    } catch (err) {
-      throw err;
-    }
-  }
-  updateNeed(params, data) {
-    const filter = {};
-    if (data.status) {
-      filter["status"] = data.status;
-    }
-    if (data.priority) {
-      filter["priority"] = data.priority;
-    }
-    try {
-      return this.Needs.updateOne(
-        { resident: params.resident, need: params.need },
-        filter
-      );
-    } catch (err) {
-      throw err;
-    }
-  }
-  deleteUserfromEvent(eventID, username){
-    try{
-        return this.Event.updateOne(
-            { _id: ObjectId(eventID)},
-            { $pull: {rsvp: username}});
-    } catch(err){
-        throw err;
-    }
-}
-getAllEvents(){
-  return this.Event.find({})
-      .then(events => {
-          return events;
-      }).catch(err => {
-          throw err;
-      })
-}
-
-addUserToEvent(eventID, username){
-  try{
-      return this.Event.updateOne(
-          { _id: ObjectId(eventID)},
-          { $push: {rsvp: username}});
-  } catch(err){
-      throw err;
-  }
-
-}
     /*  EVENT  */
-    addEvent(event){ 
-      const newEvent = new this.Event({
-          title: event.title,
-          description: event.description,
-          location: event.location,
-          date: event.date,
-          start_time: event.start_time,
-          end_time: event.end_time
-      });
-      try {
-          return newEvent.save()
-      } catch (err) {
-          throw err;
-      }
-  }
+
+    deleteUserfromEvent(eventID, username) {
+        try {
+            return this.Event.updateOne(
+                { _id: ObjectId(eventID) },
+                { $pull: { rsvp: username } });
+        } catch (err) {
+            throw err;
+        }
+    }
+    getAllEvents() {
+        return this.Event.find({})
+            .then(events => {
+                return events;
+            }).catch(err => {
+                throw err;
+            })
+    }
+
+    addUserToEvent(eventID, username) {
+        try {
+            return this.Event.updateOne(
+                { _id: ObjectId(eventID) },
+                { $push: { rsvp: username } });
+        } catch (err) {
+            throw err;
+        }
+
+    }
+    
+    addEvent(event) {
+        const newEvent = new this.Event({
+            title: event.title,
+            description: event.description,
+            location: event.location,
+            date: event.date,
+            start_time: event.start_time,
+            end_time: event.end_time
+        });
+        try {
+            return newEvent.save()
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    /* MANAGE NEEDS */
+
+    addNeed(need) {
+        const newNeed = new this.Needs({
+            resident: need.resident,
+            need: need.need,
+            priority: need.priority,
+            status: need.status,
+        });
+        try {
+            return newNeed.save();
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    getAllNeeds() {
+        try {
+            return this.Needs.find();
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    updateNeed(params, data) {
+        const filter = {};
+        if (data.status) {
+            filter["status"] = data.status;
+        }
+        if (data.priority) {
+            filter["priority"] = data.priority;
+        }
+        try {
+            return this.Needs.updateOne(
+                { resident: params.resident, need: params.need },
+                filter
+            );
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    /* TUTORIAL */
+
+    addTutorial(tutorial) {
+        const newTutorial = new this.Tutorial({
+            app: tutorial.app,
+            videoId: tutorial.videoId,
+            enabled: tutorial.enabled
+        });
+        try {
+            return newTutorial.save()
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    getTutorial(appName) {
+        return this.Tutorial.findOne({ app: appName });
+    }
+
+    getAllTutorial() {
+        return this.Tutorial.find().sort({ app: "asc" });
+    }
+
+    getAllEnabledTutorial() {
+        return this.Tutorial.find({ enabled: true }).sort({ app: "asc" });
+    }
+
+    enableTutorial(appName) {
+        return this.Tutorial.findOneAndUpdate({ app: appName }, { enabled: true }, { new: true });
+    }
+
+    disableTutorial(appName) {
+        return this.Tutorial.findOneAndUpdate({ app: appName }, { enabled: false }, { new: true });
+    }
+
 }
 
 module.exports = DBMongo;
