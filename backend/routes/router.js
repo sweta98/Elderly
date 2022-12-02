@@ -9,6 +9,10 @@ router.get('/', (req, res) => {
     res.sendFile(CWD + '/frontend/views/index.html')
 })
 
+router.get('/events', (req, res) => {
+    res.sendFile(CWD + '/frontend/views/events.html')
+})
+
 /* 
     APIs
 */
