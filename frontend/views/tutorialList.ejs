@@ -15,15 +15,17 @@
         
         <%- include("./partials/header.ejs") %>
     
-        <div class="container-fluid">
-            
+        <div id="tutorial-header">
             <h1>Tutorials</h1>
+        </div>
+
+        <div class="container-fluid vh-70">
             
-            <div id="tutorial-buttons-container">
+            <div id="tutorial-buttons-container" class="h-100 d-flex flex-column justify-content-center minh-vh-60">
                 <% for(let i = 0 ; i < tutorials.length ; i++)  { %>
-                    <a id="<%= tutorials[i].app %>">
+                    <a id="<%= tutorials[i].app %>" href="tutorials/<%= tutorials[i].app %>">
                         <div class="btn-group-vertical center align-middle">
-                            <button type="button" class="btn btn-lg btn-block">
+                            <button type="button" class="btn btn-lg">
                                 <%= tutorials[i].app %>
                             </button>
                         </div>
