@@ -10,22 +10,33 @@
         <link rel="stylesheet" href="css/tutorials.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/tutorials.css">
+        <script src="utils/http.js"></script>
+        <script src="utils/api.js"></script>
+        <script src="js/manageTutorial.js"></script>
     </head>
     <body>
         
         <%- include("./partials/header.ejs") %>
-    
-        <div class="container-fluid">
-            
+
+        <div id="tutorial-header">
             <h1>Tutorials</h1>
+        </div>
+
+        <div class="container-fluid vh-70">
             
-            <div id="tutorial-buttons-container">
+            <div id="tutorial-buttons-container" class="h-100 d-flex flex-column justify-content-center minh-vh-60">
                 <% for(let i = 0 ; i < tutorials.length ; i++)  { %>
                     <div class="custom-control custom-switch toggle-tutorial">
-                        <input type="checkbox" class="custom-control-input" id="toggle-<%= tutorials[i].app %>">
+                        <% if (tutorials[i].enabled) { %>
+                        <input type="checkbox" class="custom-control-input" id="toggle-<%= tutorials[i].app %>" onclick="toggleTutorial('<%= tutorials[i].app %>', true)" checked>
+                        <% } else { %>
+                        <input type="checkbox" class="custom-control-input" id="toggle-<%= tutorials[i].app %>" onclick="toggleTutorial('<%= tutorials[i].app %>', false)">
+                        <% } %>
                         <label class="custom-control-label" for="toggle-<%= tutorials[i].app %>"></label>
                     </div>
-                    <a id="<%= tutorials[i].app %>">
+                    <a id="<%= tutorials[i].app %>" href="manageTutorials/<%= tutorials[i].app %>">
                         <div class="btn-group-vertical center align-middle manage-tutorial-button">
                             <button type="button" class="btn btn-lg btn-block">
                                 <%= tutorials[i].app %>
@@ -50,6 +61,5 @@
             crossorigin="anonymous"></script>
     
         <script src="js/main.js"></script>
-        <script src="js/tutorial.js"></script>
     </body>
 </html>

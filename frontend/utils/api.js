@@ -14,6 +14,12 @@ class ApiClient {
   updateNeed = (url, body) => {
     return this.httpClient.putJsonToApi(url, body);
   };
+  enableTutorial = (url, body) => {
+    return this.httpClient.patchJsonToApi(url, body);
+  };
+  disableTutorial = (url, body) => {
+    return this.httpClient.patchJsonToApi(url, body);
+  };
 }
 const apiClient = new ApiClient();
 visualViewport;
