@@ -19,14 +19,16 @@
 
 .toggle-tutorial {
     position: relative;
-    top: 7.5vh;
+    top: 5vh;
     left: -42vw;
+    min-height: 0;
+    height: 0;
 }
 
 .tutorial-view {
     position: absolute;
     width: 98vw; 
-    height: 50vh;
+    height: 30vh;
     left: 50%;
     margin-left: -49vw;
     border:none;
