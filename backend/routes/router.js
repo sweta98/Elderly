@@ -9,14 +9,17 @@ router.get('/', (req, res) => {
     res.sendFile(CWD + '/frontend/views/index.html')
 })
 
-router.get('/events', (req, res) => {
-    res.sendFile(CWD + '/frontend/views/events.html')
+router.get('/createEvent', (req, res) => {
+    res.sendFile(CWD + '/frontend/views/createEvent.html')
 })
 
+router.get('/events', (req, res) => {
+    res.sendFile(CWD + '/frontend/views/rsvpEvent.html')
+})
 /* 
     APIs
 */
 router.use('/api/users', require('./users'))
-router.use('/events', require('./events'))
+router.use('/api/events', require('./events'))
 
 module.exports = router
