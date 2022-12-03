@@ -23,7 +23,10 @@
             
             <div id="tutorial-buttons-container" class="h-100 d-flex flex-column justify-content-center minh-vh-60">
                 <% for(let i = 0 ; i < tutorials.length ; i++)  { %>
-                    <a id="<%= tutorials[i].app %>" href="tutorials/<%= tutorials[i].app %>">
+                    <a id="<%= tutorials[i].app %>" href="tutorials/<%= tutorials[i].app %>"
+                        <% if (tutorials[i].enabled) { %> style="display:block"
+                        <% } else { %> style="display:none" <% } %>    
+                    >
                         <div class="btn-group-vertical center align-middle">
                             <button type="button" class="btn btn-lg">
                                 <%= tutorials[i].app %>
