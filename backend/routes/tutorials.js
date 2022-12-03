@@ -12,57 +12,29 @@ const Tutorial = require('../models/Tutorial')
 
 /* Static Pages */
 
-router.get("/tutorials", (req, res) => { // for resident
-    const tutorials = [
-        {
-            app: "Facebook",
-            videoId: "xu8rh9Ref4Y",
-            enabled: true
-        },
-        {
-            app: "Netflix",
-            videoId: "o5RxOCCHNGM",
-            enabled: true
-        },
-        {
-            app: "TikTok",
-            videoId: "PyaZxrN_gM8",
-            enabled: true
-        },
-    ]
+router.get("/tutorials", async (req, res) => { // for resident
+    const tutorials = await Tutorial.getAll();
     res.render(CWD + "/frontend/views/tutorialList.ejs", { tutorials });
 });
 
-router.get("/manageTutorials", (req, res) => { // for staff
-    const tutorials = [
-        {
-            app: "Facebook",
-            videoId: "xu8rh9Ref4Y",
-            enabled: true
-        },
-        {
-            app: "Netflix",
-            videoId: "o5RxOCCHNGM",
-            enabled: true
-        },
-        {
-            app: "TikTok",
-            videoId: "PyaZxrN_gM8",
-            enabled: true
-        },
-    ]
+router.get("/manageTutorials", async (req, res) => { // for staff
+    const tutorials = await Tutorial.getAll();
+
     res.render(CWD + "/frontend/views/manageTutorial.ejs", { tutorials });
 });
 
-router.get("/tutorials/:appName", (req, res) => { // for resident
-    const tutorials = [
-        {
-            app: req.params.appName,
-            videoId: "xu8rh9Ref4Y",
-            enabled: true
-        },
-    ]
-    res.render(CWD + "/frontend/views/tutorial.ejs", { tutorials });
+router.get("/tutorials/:appName", async (req, res) => { // for resident
+    const appName = req.params.appName;
+    const tutorial = await Tutorial.get(appName);
+
+    res.render(CWD + "/frontend/views/watchTutorial.ejs", { tutorial });
+});
+
+router.get("/manageTutorials/:appName", async (req, res) => { // for staff
+    const appName = req.params.appName;
+    const tutorial = await Tutorial.get(appName);
+
+    res.render(CWD + "/frontend/views/watchTutorialStaff.ejs", { tutorial });
 });
 
 /* APIs */
