@@ -30,11 +30,28 @@ router.get("/tutorials", (req, res) => { // for resident
             enabled: true
         },
     ]
-    res.render(CWD + "/frontend/views/tutorial.ejs", { tutorials });
+    res.render(CWD + "/frontend/views/tutorialList.ejs", { tutorials });
 });
 
 router.get("/manageTutorials", (req, res) => { // for staff
-    res.sendFile(CWD + "/frontend/views/manageNeeds.html");
+    const tutorials = [
+        {
+            app: "Facebook",
+            videoId: "xu8rh9Ref4Y",
+            enabled: true
+        },
+        {
+            app: "Netflix",
+            videoId: "o5RxOCCHNGM",
+            enabled: true
+        },
+        {
+            app: "TikTok",
+            videoId: "PyaZxrN_gM8",
+            enabled: true
+        },
+    ]
+    res.render(CWD + "/frontend/views/manageTutorial.ejs", { tutorials });
 });
 
 router.get("/tutorials/:appName", (req, res) => { // for resident
@@ -47,6 +64,7 @@ router.get("/tutorials/:appName", (req, res) => { // for resident
     ]
     res.render(CWD + "/frontend/views/tutorial.ejs", { tutorials });
 });
+
 /* APIs */
 
 router.get('/api/tutorials/', async (req, res) => {
