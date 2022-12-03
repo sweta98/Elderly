@@ -37,6 +37,7 @@ router.use("/api/users", require("./users"));
 router.use('/api/tutorials', require('./tutorials'));
 router.use("/api/wishes", require("./wishes"));
 router.use('/api/events', require('./events'))
+router.use('/api/auth', require('./auth')) // Used for creating new users and session
 
 module.exports = router;
 
