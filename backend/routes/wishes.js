@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Wish = require("../models/Wish");
 
+/* Get all wishes from all resident */
 router.get("/", async (_req, res) => {
   try {
     const wishes = await Wish.getAll(true);
@@ -11,6 +12,17 @@ router.get("/", async (_req, res) => {
   }
 });
 
+/* Get all wishes from a resident */
+router.get("/:username", async (req, res) => {
+  try {
+    const wishes = await Wish.getResidentWishes(req.params);
+    res.status(200).json({ wishes });
+  } catch (err) {
+    handleError(err, res, 500);
+  }
+});
+
+/* Change a wish from a specific resident */
 router.put("/:username/:wish", async (req, res) => {
   try {
     let wish = await Wish.update(req.params, req.body);
@@ -20,6 +32,7 @@ router.put("/:username/:wish", async (req, res) => {
   }
 });
 
+/* Create a new wish */
 router.post("/", async (req, res) => {
   try {
     let wish = await Wish.save(req.body);

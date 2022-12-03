@@ -27,6 +27,10 @@ class Wish {
   static getAll() {
     return Wish.db.getAllWishes();
   }
+
+  static getResidentWishes(params) {
+    return Wish.db.getResidentAllWishes(params);
+  }
 }
 
 module.exports = Wish;

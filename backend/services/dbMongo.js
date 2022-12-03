@@ -67,11 +67,11 @@ class DBMongo {
 
     /*  WISH  */
     getAllWishes() {
-    try {
-      return this.Wish.find();
-    } catch (err) {
-      throw err;
-    }
+        try {
+          return this.Wish.find();
+        } catch (err) {
+          throw err;
+        }
     }
 
     addWish(wish) {
@@ -89,21 +89,29 @@ class DBMongo {
     }
 
     updateWish(params, data) {
-    const filter = {};
-    if (data.status) {
-      filter["status"] = data.status;
+        const filter = {};
+        if (data.status) {
+          filter["status"] = data.status;
+        }
+        if (data.priority) {
+          filter["priority"] = data.priority;
+        }
+        try {
+          return this.Wish.updateOne(
+            { username: params.username, content: params.content },
+            filter
+          );
+        } catch (err) {
+          throw err;
+        }
     }
-    if (data.priority) {
-      filter["priority"] = data.priority;
-    }
-    try {
-      return this.Wish.updateOne(
-        { username: params.username, content: params.content },
-        filter
-      );
-    } catch (err) {
-      throw err;
-    }
+
+    getResidentAllWishes(username) {
+        try {
+            return this.Wish.findOne({ username: username });
+        } catch (err) {
+            throw err;
+        }
     }
 
 

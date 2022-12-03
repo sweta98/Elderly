@@ -31,7 +31,7 @@ router.get('/makeWishes', (req, res) => {
 */
 router.use("/api/users", require("./users"));
 router.use('/api/tutorials', require('./tutorials'));
-router.use("/api/manageWishes", require("./manageWishes"));
+router.use("/api/wishes", require("./wishes"));
 router.use('/api/events', require('./events'))
 
 module.exports = router;
