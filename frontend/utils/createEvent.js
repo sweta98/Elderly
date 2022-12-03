@@ -1,4 +1,4 @@
-import {ApiClient} from "../utils/api.js"
+// import {ApiClient} from "./api.js"
 var date_input=$('#date'); 
 var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
 var options={
@@ -17,17 +17,14 @@ function getData(form) {
     post_body[pair[0]] = pair[1];
   }
   return post_body
-}
+};
 
-//calendar
-date_input.datepicker(options);
+console.log(apiClient)
 
-//submit form  
-event_form.addEventListener("submit", function (e) {
+const submitEvent = (e) => {
   e.preventDefault();
   let post_body = getData(e.target);
   console.log(post_body)
-  const apiClient = new ApiClient();
   apiClient.createEvent(post_body).then(async (httpRes) => {
     const status = httpRes.status;
     const res = await httpRes.json();
@@ -36,4 +33,11 @@ event_form.addEventListener("submit", function (e) {
           return res;
       }
   });
-});
+}
+
+//submit form  
+event_form.addEventListener("submit", submitEvent);
+
+
+//calendar
+date_input.datepicker(options)
