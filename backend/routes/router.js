@@ -26,6 +26,10 @@ router.get('/makeWishes', (req, res) => {
     res.sendFile(CWD + '/frontend/views/makeWishes.html')
 })
 
+router.get('/login', (req, res) => {
+    res.sendFile(CWD + '/frontend/views/login.html')
+})
+
 /*
     APIs
 */
