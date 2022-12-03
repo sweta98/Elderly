@@ -29,5 +29,13 @@
     width: 40%;
 }
 .btn-container {
-    margin-top:10%;
+    position: fixed;
+    left: 0px;
+    bottom: 10%;
+    width: 100%;
+    text-align: center;
+}
+#make-wish-btn {
+    min-height: 50px;
+    min-width: 150px;
 }
