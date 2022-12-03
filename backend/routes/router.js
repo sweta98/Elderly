@@ -9,16 +9,19 @@ const CWD = process.env.INIT_CWD
 router.get("/", (req, res) => {
     res.sendFile(CWD + "/frontend/views/index.html");
   });
-  router.get("/manageNeeds", (req, res) => {
-    res.sendFile(CWD + "/frontend/views/manageNeeds.html");
-  });
-  router.get('/events', (req, res) => {
+
+router.get('/events', (req, res) => {
     res.sendFile(CWD + '/frontend/views/rsvpEvent.html')
 })
 
 router.get('/wishes', (req, res) => {
     res.sendFile(CWD + '/frontend/views/wishboard.html')
 })
+
+router.get("/manageWishes", (req, res) => {
+    res.sendFile(CWD + "/frontend/views/manageWishes.html");
+});
+
 router.get('/makeWishes', (req, res) => {
     res.sendFile(CWD + '/frontend/views/makeWishes.html')
 })
@@ -28,9 +31,7 @@ router.get('/makeWishes', (req, res) => {
 */
 router.use("/api/users", require("./users"));
 router.use('/api/tutorials', require('./tutorials'));
-router.use('/api/wishes', require('./wishes'))
-router.use('/api/makeWishes', require('./wishes'))
-router.use("/api/manageNeeds", require("./manageNeeds"));
+router.use("/api/manageWishes", require("./manageWishes"));
 router.use('/api/events', require('./events'))
 
 module.exports = router;

@@ -7,11 +7,11 @@ class ApiClient {
     return this.httpClient.getJsonFromApi("events");
   };
 
-  fetchAllNeeds = () => {
-    console.log("fetchallneeds");
-    return this.httpClient.getJsonFromApi("manageNeeds");
+  fetchAllWishes = () => {
+    console.log("fetchallwishes");
+    return this.httpClient.getJsonFromApi("manageWishes");
   };
-  updateNeed = (url, body) => {
+  updateWish = (url, body) => {
     return this.httpClient.putJsonToApi(url, body);
   };
 }

@@ -1,20 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const ManageNeeds = require("../models/ManageNeeds");
+const Wish = require("../models/Wish");
 
 router.get("/", async (_req, res) => {
   try {
-    const needs = await ManageNeeds.getAll(true);
-    res.status(200).json({ needs });
+    const wishes = await Wish.getAll(true);
+    res.status(200).json({ wishes });
   } catch (err) {
     handleError(err, res, 500);
   }
 });
 
-router.put("/:resident/:need", async (req, res) => {
+router.put("/:username/:wish", async (req, res) => {
   try {
-    let need = await ManageNeeds.update(req.params, req.body);
-    res.status(200).json(need);
+    let wish = await Wish.update(req.params, req.body);
+    res.status(200).json(wish);
   } catch (err) {
     handleError(err, res, 500);
   }
@@ -22,8 +22,8 @@ router.put("/:resident/:need", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    let need = await ManageNeeds.saveNeed(req.body);
-    res.json(need);
+    let wish = await Wish.save(req.body);
+    res.json(wish);
   } catch (err) {
     handleError(err, res, 500);
   }

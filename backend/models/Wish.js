@@ -1,33 +1,32 @@
-const DAO = require('../services/DAO')
+const DAO = require("../services/DAO");
 
-class Wish{
-    constructor(wish){
-        this.userid  = wish.userid;
-        this.content = wish.content;
-    }
+class Wish {
+  constructor(wish) {
+    this.username = wish.username;
+    this.content = wish.content;
+    this.priority = wish.priority;
+    this.status = wish.status;
+  }
 
-    static get db(){
-        return DAO.db;
-    }
+  static get db() {
+    return DAO.db;
+  }
 
-    save(){
-        return Wish.db.addWish({
-            userid: this.userid,
-            content: this.content,
-            // status: this.status,
-            // timestamp: this.timestamp,
-            // priority: this.priority,
-        });
-    }
+  static save(wish) {
+    return Wish.db.addWish({
+      username: wish.username,
+      content: wish.content,
+      priority: "Undefined",
+      status: "New",
+    });
+  }
+  static update(params, patch) {
+    return Wish.db.updateWish(params, patch);
+  }
 
-    static getAll(){
-        return Wish.db.getAllWish();
-    }
-
-    static paginateAnnouncement(query, options){
-        return Wish.db.paginateWish(query, options);
-    }
-
+  static getAll() {
+    return Wish.db.getAllWishes();
+  }
 }
 
 module.exports = Wish;
