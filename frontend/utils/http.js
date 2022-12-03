@@ -1,4 +1,4 @@
-class HTTPClient {
+export class HTTPClient {
     SUCCESS_CODES = [201, 200];
 
     constructor() {
