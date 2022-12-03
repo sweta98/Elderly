@@ -1,6 +1,6 @@
 //import {HTTPClient} from "./http.js"
 
-export class ApiClient {
+class ApiClient {
     constructor(host, port) {
         this.httpClient = new HTTPClient(host, port);
     }

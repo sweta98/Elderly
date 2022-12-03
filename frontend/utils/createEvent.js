@@ -19,8 +19,6 @@ function getData(form) {
   return post_body
 };
 
-console.log(apiClient)
-
 const submitEvent = (e) => {
   e.preventDefault();
   let post_body = getData(e.target);
