@@ -14,7 +14,7 @@ router.get("/", async (_req, res) => {
 router.put("/:resident/:need", async (req, res) => {
   try {
     let need = await ManageNeeds.update(req.params, req.body);
-    res.json(need);
+    res.status(200).json(need);
   } catch (err) {
     handleError(err, res, 500);
   }
