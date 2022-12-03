@@ -2,6 +2,7 @@
 const express = require('express')
 var DB = require('./backend/services/dbMongo');
 var DAO = require('./backend/services/DAO');
+const path =  require("path");
 
 // Setup DB
 DAO.db = new DB();
@@ -12,12 +13,17 @@ const PORT = process.env.PORT || 8080
 // app.get("/", (req, res) => {
 //   res.send("Hello World!");
 // });
+// app.use(expressEjsLayouts);
 
+app.set("view engine", "ejs");
+//app.set("views", path.join(__dirname, "./frontend/views"));
 // Setup view engine
 app.set("view-engine", "ejs");
 
 // Parse JSON requests into req.body
 app.use(express.json()) 
+app.use(express.urlencoded({ extended: false }));
+
 
 // Setup routes
 app.use('/', require('./backend/routes/router'))

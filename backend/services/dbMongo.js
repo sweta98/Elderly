@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const encryptor = require('../controllers/encryptor')
 const DBURL = "mongodb+srv://sridelderly:18658svgenie@maincluster.ovf8aqy.mongodb.net/?retryWrites=true&w=majority"
-const ObjectId = require('mongodb').ObjectId;
+const  ObjectId = require('mongodb').ObjectId;
 
 class DBMongo {
     constructor() {
@@ -11,11 +11,12 @@ class DBMongo {
         }
 
         // Connect to the main DB
-        mongoose.connect(DBURL).then(() =>
-            console.log(`Main Database Connected: ${DBURL}`))
-            .catch(err => console.error('Main Database refused to connect：', err));
+        mongoose.connect(DBURL).then(() => 
+        console.log(`Main Database Connected: ${DBURL}`))
+        .catch(err => console.error('Main Database refused to connect：', err));
 
-        this.User = require("./mongoose/userModel");
+        this.User = require('./mongoose/userModel');
+        this.Wish = require('./mongoose/wishModel')
         this.Needs = require("./mongoose/needsModel");
         this.Tutorial = require('./mongoose/tutorialModel');
         this.Event = require('./mongoose/eventModel');
@@ -65,6 +66,85 @@ class DBMongo {
             });
     }
 
+  getAllNeeds() {
+    try {
+      return this.Needs.find();
+    } catch (err) {
+      throw err;
+    }
+  }
+  updateNeed(params, data) {
+    const filter = {};
+    if (data.status) {
+      filter["status"] = data.status;
+    }
+    if (data.priority) {
+      filter["priority"] = data.priority;
+    }
+    try {
+      return this.Needs.updateOne(
+        { resident: params.resident, need: params.need },
+        filter
+      );
+    } catch (err) {
+      throw err;
+    }
+  }
+  deleteUserfromEvent(eventID, username){
+    try{
+        return this.Event.updateOne(
+            { _id: ObjectId(eventID)},
+            { $pull: {rsvp: username}});
+    } catch(err){
+        throw err;
+    }
+  }
+  /* Wish */
+  addWish(wish) {
+      const newWish = new this.Wish({
+          // userid: mongoose.Types.ObjectId(wish.userid), TODO: change back when User feature complete
+          userid: wish.userid,
+          content: wish.content,
+          timestamp: wish.timestamp,
+          status: "wished",
+      });
+      try {
+          return newWish.save()
+      } catch (err) {
+          throw { status: 501, message: err };
+      }
+  }
+
+  getAllWish() {
+      return this.Wish.find()
+          .select("userid content timestamp")
+          // .populate("userid", "username")
+          .sort({ "time": -1 })
+          .then(wishes => {
+              return wishes
+          }).catch(err => {
+              throw err;
+          })
+  }
+
+  paginateWish(query, options) {
+      return this.Wish.paginate({ content: { $regex: query.query, $options: 'i' } }, options)
+          .then(results => {
+              return results
+          })
+          .catch(err => {
+              throw err;
+          })
+  }
+
+getAllEvents(){
+  return this.Event.find({})
+      .then(events => {
+          return events;
+      }).catch(err => {
+          throw err;
+      })
+}
     /*  EVENT  */
 
     deleteUserfromEvent(eventID, username) {
@@ -95,7 +175,7 @@ class DBMongo {
         }
 
     }
-    
+
     addEvent(event) {
         const newEvent = new this.Event({
             title: event.title,
