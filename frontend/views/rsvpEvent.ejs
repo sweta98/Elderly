@@ -14,16 +14,18 @@
 <body>
 
     <%- include("./partials/header.ejs") %>
-    <div class="container-fluid">
+    <div>
+        <div class="users-display" id="eventstream"></div>
     </div>
+   
 <%- include("./partials/footer.ejs") %>
 
-<script id="events">
+<script id="events" type="text/html">
 
     <div class="card" style="width: 18rem;">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <h5 class="card-title">{{title}}</h5>
+          <p class="card-text">{{location}}</p>
           <div style="display:flex; justify-content:space-between;">
             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                Know More
@@ -32,14 +34,8 @@
           </div>
      
         </div>
-        <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-            </div>
-          </div>
+     
       </div>
-    
-
 
 </script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
