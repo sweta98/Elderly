@@ -106,9 +106,9 @@ class DBMongo {
         }
     }
 
-    getResidentAllWishes(username) {
+    getResidentAllWishes(params) {
         try {
-            return this.Wish.findOne({ username: username });
+            return this.Wish.findOne({ username: params.username });
         } catch (err) {
             throw err;
         }
