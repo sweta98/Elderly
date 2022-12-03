@@ -8,9 +8,13 @@ class ApiClient {
   };
 
   fetchAllNeeds = () => {
-    console.log("fetchallneeds");
     return this.httpClient.getJsonFromApi("manageNeeds");
   };
+
+  fetchNeed = (url) => {
+    return this.httpClient.getJsonFromApi(url);
+  };
+
   updateNeed = (url, body) => {
     return this.httpClient.putJsonToApi(url, body);
   };

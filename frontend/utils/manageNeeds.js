@@ -11,11 +11,16 @@ const updateNeed = () => {
   updateResidentNeed(url, body);
 };
 
-const displayModal = (button) => {
+const displayModal = async (button) => {
   const resident = button.dataset.resident;
   const need = button.dataset.need;
-  const modal = document.getElementById("exampleModalLabel");
-  modal.innerHTML = resident + "'s " + need;
+  const wish = await fetchNeedToUpdate(
+    `manageNeeds/?resident=${resident}&need=${need}`,
+    resident,
+    need
+  );
+  console.log("hello");
+  console.log(wish);
 };
 
 const displayNewNeeds = (newNeeds) => {
@@ -108,6 +113,54 @@ const updateResidentNeed = async (url, body) => {
     if (status === 200) {
       window.location.reload();
       return res;
+    }
+  });
+};
+
+const fetchNeedToUpdate = async (url, resident, need) => {
+  console.log(url);
+  apiClient.fetchNeed(url).then(async (httpRes) => {
+    const status = httpRes.status;
+    const res = await httpRes.json();
+    if (status === 200) {
+      console.log(res.needs);
+      let selectStatus = document.getElementById("need-status");
+      let selectPriority = document.getElementById("need-priority");
+      console.log(res.needs[0]);
+
+      switch (res.needs[0].status) {
+        case "New":
+          selectStatus.selectedIndex = 0;
+          break;
+        case "In Progress":
+          selectStatus.selectedIndex = 1;
+          break;
+        case "Completed":
+          selectStatus.selectedIndex = 2;
+          break;
+        default:
+          selectStatus.selectedIndex = 0;
+          break;
+      }
+
+      switch (res.needs[0].priority) {
+        case "Low":
+          selectPriority.selectedIndex = 0;
+          break;
+        case "Medium":
+          selectPriority.selectedIndex = 1;
+          break;
+        case "High":
+          selectPriority.selectedIndex = 2;
+          break;
+        default:
+          selectPriority.selectedIndex = 0;
+          break;
+      }
+
+      const modal = document.getElementById("exampleModalLabel");
+      modal.innerHTML = resident + "'s " + need;
+      return res.needs;
     }
   });
 };

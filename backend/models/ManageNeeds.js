@@ -32,8 +32,8 @@ class Needs {
     return Needs.db.updateNeed(params, patch);
   }
 
-  static getAll() {
-    return Needs.db.getAllNeeds();
+  static getAll(filter) {
+    return Needs.db.getAllNeeds(filter);
   }
 }
 
