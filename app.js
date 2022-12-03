@@ -2,7 +2,6 @@
 const express = require('express')
 var DB = require('./backend/services/dbMongo');
 var DAO = require('./backend/services/DAO');
-// const expressEjsLayouts = require("express-ejs-layouts") ;
 const path =  require("path");
 
 // Setup DB
@@ -15,6 +14,7 @@ const PORT = process.env.PORT || 8080
 //   res.send("Hello World!");
 // });
 // app.use(expressEjsLayouts);
+
 app.set("view engine", "ejs");
 //app.set("views", path.join(__dirname, "./frontend/views"));
 // Setup view engine

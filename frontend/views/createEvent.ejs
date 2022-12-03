@@ -42,18 +42,9 @@
 </head>
 
 <body>
-    <nav class="navbar fixed-top navbar-light bg-light">
-        <h2 class="navbar-brand mb-0">Facility Genie</h2>
-        <!-- <img src="img/logo.png" style="height: 50px;"> -->
-        <button id="logout" type="button" class="btn btn-secondary">
-            <span>
-                <i class="material-icons" style="float: left">logout</i>
-                Logout
-            </span>
-        </button>
-    </nav>
-    <div id="create_event_header" class="heading-one">
-        Create Event
+    <%- include("./partials/header.ejs") %>
+    <div id="create_event_header">
+        <h1>Create Event</h1>
     </div>
 
     <div class="container">
@@ -122,41 +113,11 @@
                     </form>
                 </div>
             </div>
-        </main>
-    </div>
-
-    <footer class="footer">
-        <div id="buttonGroup" class="btn-group selectors" role="group">
-            <button id="home" type="button"
-                class="btn btn-secondary button-active">
-                <div class="selector-holder">
-                    <i class="material-icons">home</i>
-                    <span>Home</span>
-                </div>
-            </button>
-            <button id="wishboard" type="button"
-                class="btn btn-secondary button-inactive">
-                <div class="selector-holder">
-                    <i class="material-icons">card_giftcard</i>
-                    <span>WishBoard</span>
-                </div>
-            </button>
-            <button id="tutorials" type="button"
-                class="btn btn-secondary button-inactive">
-                <div class="selector-holder">
-                    <i class="material-icons">ondemand_video</i>
-                    <span>Tutorials</span>
-                </div>
-            </button>
-            <button id="events" type="button"
-                class="btn btn-secondary button-inactive">
-                <div class="selector-holder">
-                    <i class="material-icons">event_available</i>
-                    <span>Events</span>
-                </div>
-            </button>            
         </div>
-    </footer>
+    </main>
+</div>
+<%- include("./partials/footer.ejs") %>
+
 <!-- 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
