@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
     res.sendFile(CWD + "/frontend/views/manageNeeds.html");
   });
   router.get('/events', (req, res) => {
-    res.sendFile(CWD + '/frontend/views/rsvpEvent.html')
+    res.render(CWD + '/frontend/views/rsvpEvent')
 })
 
 /* 
