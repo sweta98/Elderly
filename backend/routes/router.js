@@ -26,10 +26,16 @@ router.get('/wishes', (req, res) => {
   res.render(CWD + '/frontend/views/wishboard')
    // res.sendFile(CWD + '/frontend/views/wishboard.html')
 })
+
 router.get('/makeWishes', (req, res) => {
   res.render(CWD + '/frontend/views/makeWishes')
  //   res.sendFile(CWD + '/frontend/views/makeWishes.html')
 })
+
+router.get('/createEvent', (req, res) => {
+  res.render(CWD + '/frontend/views/createEvent')
+})
+
 
 /*
     APIs
