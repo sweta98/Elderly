@@ -19,12 +19,16 @@ router.get("/", (req, res) => {
 router.get('/wishes', (req, res) => {
     res.sendFile(CWD + '/frontend/views/wishboard.html')
 })
+router.get('/makeWishes', (req, res) => {
+    res.sendFile(CWD + '/frontend/views/makeWishes.html')
+})
 
 /* 
     APIs
 */
 router.use('/api/users', require('./users'))
 router.use('/api/wishes', require('./wishes'))
+router.use('/api/makeWishes', require('./wishes'))
 router.use("/api/manageNeeds", require("./manageNeeds"));
 router.use('/api/events', require('./events'))
 
