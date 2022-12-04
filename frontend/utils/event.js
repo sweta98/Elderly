@@ -43,6 +43,7 @@ const create_event_btn = document.getElementById("create_event_btn")
 create_event_btn.onclick = () =>{
   window.location.replace("/createEvent");
 }
+
 window.onload = () =>{
   if (window.localStorage.getItem("role") == "staff"){
       create_event_btn.style.display = "block";
