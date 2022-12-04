@@ -38,7 +38,7 @@ router.get('/createEvent', (req, res) => {
 
 
 router.get('/login', (req, res) => {
-    res.sendFile(CWD + '/frontend/views/login.html')
+  res.render(CWD + '/frontend/views/login')
 })
 
 /*
