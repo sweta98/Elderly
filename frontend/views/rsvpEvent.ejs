@@ -29,11 +29,11 @@
               <p class="card-text">Location: <%= events[i].location %></p>
               <p class="card-text"><%= events[i].start_time %> to <%= events[i].end_time %> </p>
               
-          <div style="display: flex; justify-content: space-between;">
-            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample<%= i%>" aria-expanded="false" aria-controls="collapseExample">
+          <div class="button-event" style="display: flex; justify-content: space-between;" >
+            <button class="btn" type="button" data-toggle="collapse" data-target="#collapseExample<%= i%>" aria-expanded="false" aria-controls="collapseExample">
                 Know More
               </button>
-              <button class="btn btn-primary" type="button" onclick="update('<%= events[i]._id %>')">
+              <button class="btn" type="button" onclick="update('<%= events[i]._id %>')">
                 RSVP
               </button>
 
