@@ -21,10 +21,10 @@
         </div>
 
         <div class="container-fluid">
-            <div id="video-container" class="h-100 d-flex flex-column justify-content-center minh-vh-60">
+            <div id="video-container" class="h-75 d-flex flex-column justify-content-center minh-vh-50">
             <iframe id="tutorial-frame-id" class="tutorial-view" title="Video tutorial for <%= tutorial.app %>"
-                src="https://www.youtube.com/embed/<%= tutorial.videoId %>?enablejsapi=1&version=3&playerapiid=ytplayer" modestbranding="0"
-                controls="0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                src="https://www.youtube.com/embed/<%= tutorial.videoId %>?enablejsapi=1&version=3&playerapiid=ytplayer"
+                frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen>
             </iframe>
             <span style="display:none" id="hidden-video-id"><%= tutorial.videoId %></span>
@@ -47,7 +47,5 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
-    
-        <script src="../js/main.js"></script>
     </body>
 </html>
