@@ -26,6 +26,10 @@ function toggleTutorial(app) {
     }
 }
 
-function showButtonEnabled(app) {}
+function showButtonEnabled(app) {
+    document.querySelector(`#button-${app}`).classList.remove("tutorial-disabled");
+}
 
-function showButtonDisabled(app) {}
+function showButtonDisabled(app) {
+    document.querySelector(`#button-${app}`).classList.add("tutorial-disabled");
+}

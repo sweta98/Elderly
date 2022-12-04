@@ -3,8 +3,8 @@
     top: 40%;
     transform: translateY(-50%);
 }*/
-.minh-vh-60 {
-    min-height: 60vh;
+.minh-vh-50 {
+    min-height: 50vh;
 }
 
 .vh-70 {
@@ -27,9 +27,21 @@
 
 .tutorial-view {
     position: absolute;
-    width: 98vw; 
-    height: 30vh;
+    width: 98vw;
+    max-height: 70vh; 
+    aspect-ratio: 7/5;
     left: 50%;
     margin-left: -49vw;
     border:none;
+}
+
+.tutorial-disabled {
+    background-color: #c5d8d188;
+    color: #21252988;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff;
+    border-color: #697821;
+    background-color: #697821;
 }
