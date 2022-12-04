@@ -15,9 +15,19 @@ const fetchEvents = async () => {
 
 
 
-function func(vartest) {
-  console.log(vartest);
+function update(eventId) {
+  let username = localStorage.getItem("username");
+  console.log(eventId, username);
+  apiClient.updateEvent(eventId, username).then(async (httpRes) => {
+    const status = httpRes.status;
+    const res = await httpRes.json();
+    if (status === 201) {
+      console.log(res);
+    }
+  }
+  );
 }
+
 fetchEvents();
 
 const socket = io('/');
