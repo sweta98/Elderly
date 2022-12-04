@@ -86,7 +86,7 @@ body {
 }
 
 .btn {
-    background-color: #51A9BF;
+    background-color: var( --button-col-primary);
     color: white;
 
     font-style: normal;
@@ -98,7 +98,7 @@ body {
 }
 
 .button-active, .selectors button:hover, .selectors button:active, .selectors button:focus{
-    color: #697821;
+    color: var( --button-col-active);
 }
 
 .button-inactive{
@@ -112,11 +112,11 @@ body {
 }
 
 .btn-group-vertical.center button:active, .btn-group-vertical.center button:hover {
-    background-color:#697821;
+    background-color: var( --button-col-active);
     color: white
 }
 .button-event button:active {
-    background-color:#697821;
+    background-color: var( --button-col-active);
     color: white;
 }
 #user-image {
