@@ -11,7 +11,7 @@ a {
     padding-top: 10%;
 }
 .wish-bubble {
-    background-color: #C5D8D1;
+    background-color: var(--button-col-primary);
     border-radius: 10px;
     width: 200px;
     margin: 10px 0;
