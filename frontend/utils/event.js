@@ -22,6 +22,7 @@ function update(eventId) {
     const status = httpRes.status;
     const res = await httpRes.json();
     if (status === 201) {
+      $("#successModal").modal("show");
       console.log(res);
     }
   }
