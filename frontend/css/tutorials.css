@@ -1,0 +1,35 @@
+/*#tutorial-buttons-container {
+    position: relative;
+    top: 40%;
+    transform: translateY(-50%);
+}*/
+.minh-vh-60 {
+    min-height: 60vh;
+}
+
+.vh-70 {
+    height: 70vh;
+}
+
+#tutorial-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-top: 10px;
+}
+
+.toggle-tutorial {
+    position: relative;
+    top: 5vh;
+    left: -42vw;
+    min-height: 0;
+    height: 0;
+}
+
+.tutorial-view {
+    position: absolute;
+    width: 98vw; 
+    height: 30vh;
+    left: 50%;
+    margin-left: -49vw;
+    border:none;
+}

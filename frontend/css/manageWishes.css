@@ -1,6 +1,7 @@
 html {
   position: relative;
   min-height: 100%;
+  font-size: 1rem;
 }
 
 body {
@@ -144,4 +145,10 @@ td {
 
 table {
   width: 100%;
+}
+
+#manage_wishes_header{
+  text-align: center;
+  margin-bottom: 30px;
+  padding-top: 10px;
 }
