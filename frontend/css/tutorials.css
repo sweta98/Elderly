@@ -38,3 +38,9 @@
     background-color: #c5d8d188;
     color: #21252988;
 }
+
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff;
+    border-color: #697821;
+    background-color: #697821;
+}
