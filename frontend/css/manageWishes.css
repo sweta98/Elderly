@@ -152,3 +152,14 @@ table {
   margin-bottom: 30px;
   padding-top: 10px;
 }
+.card-header-new{
+  background-color: #FFCECE;
+}
+
+.card-header-progress {
+background-color:#FEFFC0 ;
+}
+
+.card-header-comp {
+  background-color: #ABFFB8;
+}
