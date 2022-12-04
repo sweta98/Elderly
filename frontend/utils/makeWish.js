@@ -48,22 +48,23 @@ const displayWishes = (wishes) => {
 }
 
 const postWish = async () => {
-    $("#successModal").modal("show");
-    // const body = {
-    //     //TODO: Get Username
-    //     username: 'Boe',
-    //     //TODO: Check null input
-    //     content: document.querySelector("#wish-input").value,
-    // }
+    let content = document.querySelector("#wish-input").value;
+    if (content.length === 0) {
+        $('.alert').addClass('show')
+        return ;
+    }
+    const body = {
+        username: localStorage.getItem("username"),
+        content: content,
+    }
 
-    // apiClient.postWish(body).then( async (httpRes) => {
-    //     const status = httpRes.status;
-    //     const res = await httpRes.json();
-    //     if (status === 200) {
-    //         $("#successModal").modal("show");
-    //         return res;
-    //     }
-    //   })
+    apiClient.postWish(body).then( async (httpRes) => {
+        const status = httpRes.status;
+        const res = await httpRes.json();
+        if (status === 200) {
+            $("#successModal").modal("show");
+            return res;
+        }
+      })
 }
-
-// getWishesAndDisplay('Boe');
+getWishesAndDisplay(localStorage.getItem("username"));
