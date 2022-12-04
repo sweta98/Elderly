@@ -33,3 +33,8 @@
     margin-left: -49vw;
     border:none;
 }
+
+.tutorial-disabled {
+    background-color: #c5d8d188;
+    color: #21252988;
+}
