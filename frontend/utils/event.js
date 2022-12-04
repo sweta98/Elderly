@@ -1,6 +1,8 @@
 const $eventstream = document.getElementById("eventstream");
 const $eventTemplate = document.getElementById("events").innerHTML;
 var eventsArray;
+
+const $messages = document.querySelector("#messages");
 const fetchEvents = async () => {
   apiClient.fetchAllEvents().then(async (httpRes) => {
       const status = httpRes.status;
@@ -35,6 +37,19 @@ fetchEvents();
 //handle socket event creation
 const socket = io('/');
 socket.on('createEvent', data => {
+  const messageTemplate =
+document.querySelector("#message-template").innerHTML;
+  const html = Mustache.render(messageTemplate, {
+    title: data.title,
+    description: data.description,
+    start_time: data.start_time,
+    end_time: data.end_time,
+    location: data.location,
+    _id: data._id
+
+  });
+  $messages.insertAdjacentHTML("beforeend", html);
+  
     console.log(data)
 })
 

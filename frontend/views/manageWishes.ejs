@@ -14,6 +14,7 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/manageWishes.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -100,11 +101,11 @@
     <div class="container-fluid">
       <div id="accordion">
         <div class="card">
-          <div class="card-header" id="headingOne">
+          <div class="card-header card-header-new" id="headingOne">
             <h5 class="mb-0">
               <div class="heading heading-two">New</div>
               <div class="collapse-btn">
-                <button
+                <button id ="new-btn"
                   class="btn collapsed"
                   data-toggle="collapse"
                   data-target="#collapseOne"
@@ -129,11 +130,11 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-header" id="headingTwo">
+          <div class="card-header card-header-progress" id="headingTwo">
             <h5 class="mb-0">
               <div class="heading heading-two">In Progress</div>
               <div class="collapse-btn">
-                <button
+                <button id="progress-btn"
                   class="btn collapsed"
                   data-toggle="collapse"
                   data-target="#collapseTwo"
@@ -157,11 +158,11 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-header" id="headingThree">
+          <div class="card-header card-header-comp" id="headingThree">
             <h5 class="mb-0">
               <div class="heading heading-two">Completed</div>
               <div class="collapse-btn">
-                <button
+                <button id="completed-btn"
                   class="btn collapsed"
                   data-toggle="collapse"
                   data-target="#collapseThree"
@@ -207,6 +208,7 @@
     ></script>
     <script src="utils/http.js"></script>
     <script src="utils/api.js"></script>
+    <script src="utils/common.js"></script>
     <script src="utils/manageWishes.js"></script>
   </body>
 </html>

@@ -113,7 +113,10 @@ body {
     background-color:#697821;
     color: white
 }
-
+.button-event button:active {
+    background-color:#697821;
+    color: white;
+}
 #user-image {
     height: 40%;
     width: 40%;

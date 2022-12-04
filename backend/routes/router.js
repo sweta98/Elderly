@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const CWD = process.env.INIT_CWD
 const Event = require('../models/Event')
+const Tutorial = require('../models/Tutorial')
 /*
     URLs
 */
@@ -36,16 +37,40 @@ router.get('/createEvent', (req, res) => {
   res.render(CWD + '/frontend/views/createEvent')
 })
 
-
 router.get('/login', (req, res) => {
   res.render(CWD + '/frontend/views/login')
 })
+
+router.get("/tutorials", async (req, res) => { // for resident
+  const tutorials = await Tutorial.getAll();
+  res.render(CWD + "/frontend/views/tutorialList.ejs", { tutorials });
+});
+
+router.get("/manageTutorials", async (req, res) => { // for staff
+  const tutorials = await Tutorial.getAll();
+
+  res.render(CWD + "/frontend/views/manageTutorial.ejs", { tutorials });
+});
+
+router.get("/tutorials/:appName", async (req, res) => { // for resident
+  const appName = req.params.appName;
+  const tutorial = await Tutorial.get(appName);
+
+  res.render(CWD + "/frontend/views/watchTutorial.ejs", { tutorial });
+});
+
+router.get("/manageTutorials/:appName", async (req, res) => { // for staff
+  const appName = req.params.appName;
+  const tutorial = await Tutorial.get(appName);
+
+  res.render(CWD + "/frontend/views/watchTutorialStaff.ejs", { tutorial });
+});
 
 /*
     APIs
 */
 router.use("/api/users", require("./users"));
-router.use("/", require("./tutorials"));
+router.use("/api/tutorials", require("./tutorials"));
 router.use('/api/wishes', require('./wishes'))
 router.use('/api/makeWishes', require('./wishes'))
 router.use("/api/manageWishes", require("./wishes"));
