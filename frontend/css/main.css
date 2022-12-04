@@ -86,10 +86,12 @@ body {
 }
 
 .btn {
-    background-color: #C5D8D1;
+    background-color: #51A9BF;
+    color: white;
+
     font-style: normal;
     font-weight: 700;
-    color: #12263A;
+  
     text-align: center;
     border: 0;
     border-radius: 15px;
