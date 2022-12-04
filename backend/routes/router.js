@@ -42,9 +42,7 @@ router.get('/createEvent', (req, res) => {
 */
 router.use("/api/users", require("./users"));
 router.use('/api/tutorials', require('./tutorials'));
-router.use('/api/wishes', require('./wishes'))
-router.use('/api/makeWishes', require('./wishes'))
-router.use("/api/manageNeeds", require("./manageNeeds"));
+router.use("/api/wishes", require("./wishes"));
 router.use('/api/events', require('./events'))
 
 module.exports = router;

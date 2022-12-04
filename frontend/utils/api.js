@@ -19,6 +19,23 @@ class ApiClient {
     updateNeed = (url, body) => {
         return this.httpClient.putJsonToApi(url, body);
     };
+
+    fetchAllWishes = () => {
+        return this.httpClient.getJsonFromApi("wishes");
+    };
+    
+    updateWish = (url, body) => {
+        return this.httpClient.putJsonToApi(url, body);
+    };
+
+    getWishesByUser = (username) => {
+        return this.httpClient.getJsonFromApi("wishes/" + username);
+    };
+
+    postWish = (body) => {
+        return this.httpClient.postJsonToApi("wishes/", body);
+    };
+
 }
 
 const apiClient = new ApiClient();
