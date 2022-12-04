@@ -13,16 +13,26 @@
             </div>
         </button>
         <button id="tutorials" type="button" class="btn btn-secondary button-inactive">
-            <div class="selector-holder">
+            <div class="selector-holder" onclick="goToTutorials()">
                 <i class="material-icons">ondemand_video</i>
                 <span>Tutorials</span>
             </div>
         </button>
         <button id="events" type="button" class="btn btn-secondary button-inactive">
-            <div class="selector-holder">
+            <div class="selector-holder" onclick="window.location.replace('/events')">
                 <i class="material-icons">event_available</i>
                 <span>Events</span>
             </div>
         </button>
     </div>
 </footer>
+<script>
+    function goToTutorials() {
+        const role = localStorage.getItem("role");
+        if (role === "resident") {
+            window.location.replace("/tutorials");
+        } else if (role === "staff") {
+            window.location.replace("/manageTutorials");
+        }
+    }
+</script>

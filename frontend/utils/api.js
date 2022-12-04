@@ -11,6 +11,11 @@ class ApiClient {
         return this.httpClient.postJsonToApi("events", post_body);
     };
 
+    updateEvent = (eventID, username) => {
+        const post_body = { "username": username };
+        return this.httpClient.patchJsonToApi(`events/${eventID}`, post_body);        
+    };
+
     fetchAllNeeds = () => {
         console.log("fetchallneeds");
         return this.httpClient.getJsonFromApi("manageNeeds");

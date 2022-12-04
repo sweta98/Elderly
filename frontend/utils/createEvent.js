@@ -13,24 +13,39 @@ function getData(form) {
   var formData = new FormData(form);
   let post_body = {}
   for (var pair of formData.entries()) {
-    post_body[pair[0]] = pair[1];
+    if(pair[0] == "start_time" || pair[0] == "end_time"){
+        var time_split = pair[1].split(':');
+        let hour = time_split[0];
+        let minute = time_split[1];
+        let end = ""
+        if (hour > 12) {
+            end = 'PM';
+            hour -= 12;
+        } else if (hour < 12) {
+            end = 'AM';
+            if (hour == 0) {
+              hour = 12;
+            }
+        } else {
+            end = 'PM';
+        }
+        post_body[pair[0]] = hour + ':' + minute + ' ' + end;
+    }else{
+      post_body[pair[0]] = pair[1];
+    }
   }
   return post_body
 };
 
-const submitEvent = (e) => {
+const submitEvent = async(e) => {
   e.preventDefault();
-  $("successModal").modal("show");
   let post_body = getData(e.target);
-  console.log(post_body)
-  apiClient.createEvent(post_body).then(async (httpRes) => {
-    const status = httpRes.status;
-    const res = await httpRes.json();
-    if (status === 200) {
-          console.log(res);
-          return res;
-      }
-  });
+  console.log(post_body);
+  let res = await apiClient.createEvent(post_body);
+  if (res.ok) {
+        $("#successModal").modal("show");
+    }
+
 }
 
 //submit form  

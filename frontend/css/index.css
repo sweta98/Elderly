@@ -1,0 +1,20 @@
+#userinfo-container {
+    position: relative;
+    top:30%;
+    transform:translateY(-50%);
+    margin-bottom: 50px;
+}
+
+#home-buttons-container-resident {
+    margin-top: 50px;
+    position: relative;
+    top:30%;
+    transform:translateY(-50%);
+}
+
+#home-buttons-container-staff {
+    margin-top: 50px;
+    position: relative;
+    top:30%;
+    transform:translateY(-50%);
+}

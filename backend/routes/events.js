@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
         new_event.save().then((event) => {
             var io = req.app.get('socketio');
             io.emit("createEvent", event);
-            res.status(201)
+            res.status(201).json()
         });
     }catch(err){
         handleError(err, res, 400);
