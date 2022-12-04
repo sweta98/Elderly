@@ -48,11 +48,16 @@ const displayWishes = (wishes) => {
 }
 
 const postWish = async () => {
+    let content = document.querySelector("#wish-input").value;
+    if (content.length === 0) {
+        $('.alert').addClass('show')
+        return ;
+    }
     const body = {
         //TODO: Get Username
         username: 'Boe',
         //TODO: Check null input
-        content: document.querySelector("#wish-input").value,
+        content: content,
     }
 
     apiClient.postWish(body).then( async (httpRes) => {
