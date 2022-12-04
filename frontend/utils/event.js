@@ -14,7 +14,13 @@ const fetchEvents = async () => {
   });
 };
 
-
+window.onload = () =>{
+  if (window.localStorage.getItem("role") == "staff"){
+      create_event_btn.style.display = "block";
+  } else{
+      create_event_btn.style.display = "none";
+  }
+}
 
 
 function update(eventId) {
@@ -57,13 +63,5 @@ document.querySelector("#message-template").innerHTML;
 const create_event_btn = document.getElementById("create_event_btn")
 create_event_btn.onclick = () =>{
   window.location.replace("/createEvent");
-}
-
-window.onload = () =>{
-  if (window.localStorage.getItem("role") == "staff"){
-      create_event_btn.style.display = "block";
-  } else{
-      create_event_btn.style.display = "none";
-  }
 }
 
