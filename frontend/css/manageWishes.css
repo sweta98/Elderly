@@ -145,3 +145,15 @@ td {
 table {
   width: 100%;
 }
+
+.card-header-new{
+  background-color: #FFCECE;
+}
+
+.card-header-progress {
+background-color:#FEFFC0 ;
+}
+
+.card-header-comp {
+  background-color: #ABFFB8;
+}
