@@ -24,6 +24,15 @@ const getWishesAndDisplay = async (username) => {
 
 const displayWishes = (wishes) => {
     let displayHTML = "";
+    var mapStatusToValue = {
+        "New": 0,
+        "In Progress": 5,
+        "Completed": 10,
+    }
+    wishes.sort((a, b) => {
+        return mapStatusToValue[a.status] - mapStatusToValue[b.status]
+    });
+
     for (let i = 0; i < wishes.length; i++) {
         date = new Date(wishes[i].timestamp)
         displayHTML = displayHTML +
