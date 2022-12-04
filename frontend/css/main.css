@@ -86,17 +86,19 @@ body {
 }
 
 .btn {
-    background-color: #C5D8D1;
+    background-color: var( --button-col-primary);
+    color: white;
+
     font-style: normal;
     font-weight: 700;
-    color: #12263A;
+  
     text-align: center;
     border: 0;
     border-radius: 15px;
 }
 
 .button-active, .selectors button:hover, .selectors button:active, .selectors button:focus{
-    color: #697821;
+    color: var( --button-col-active);
 }
 
 .button-inactive{
@@ -110,11 +112,11 @@ body {
 }
 
 .btn-group-vertical.center button:active, .btn-group-vertical.center button:hover {
-    background-color:#697821;
+    background-color: var( --button-col-active);
     color: white
 }
 .button-event button:active {
-    background-color:#697821;
+    background-color: var( --button-col-active);
     color: white;
 }
 #user-image {
