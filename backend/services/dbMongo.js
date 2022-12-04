@@ -37,14 +37,12 @@ class DBMongo {
     }
 
     /*  USER  */
-
     addUser(user) {
         const newUser = new this.User({
             username: user.username,
             role: user.role,
-            status: user.status
         });
-        newUser.setPassword(user.password);
+        // newUser.setPassword(user.password);
         try {
             return newUser.save()
         } catch (err) {
@@ -55,14 +53,74 @@ class DBMongo {
     validateUser(username, password) {
         return this.User.findOne({ username: username })
             .then((user) => {
-                if (!user || !user.validPassword(password)) {
-                    throw { message: "Authentication failed. Invalid user or password." };
-                }
+                // if (!user || !user.validPassword(password)) {
+                //     throw { message: "Authentication failed. Invalid user or password." };
+                // }
                 return user;
             })
             .catch((err) => {
                 throw err;
             });
+    }
+
+    signIn(username) {
+        return this.User.findOne({ username: username,active: true})
+            .select("-password")
+            .then(user => {
+                user.online = true;
+                return user.save();
+            }).catch(err => {
+                throw err;
+            })
+    }
+
+    signOut(username) {
+        return this.User.findOneAndUpdate({ username: username}, { $set: { online: false } })
+            .select("-password")
+            .then(user => {
+                return user;
+            }).catch(err => {
+                throw err;
+            })
+    }
+
+    findUserByUsername(username) {
+        return this.User.findOne({ username: username, active: true})
+            .select("-password")
+            .then(user => {
+                return user;
+            }).catch(err => {
+                throw err;
+            })
+    }
+
+    updateUserByUsername(username, patch) {
+        return this.User.findOneAndUpdate(
+            { username: username , active:true}, { $set: patch }, { new: true }
+        )
+            .select("-password")
+            .then(user => {
+                return user;
+            }).catch(err => {
+                throw err;
+            })
+    }
+
+    getAllUser() {
+        return this.User.find({active: true})
+            .select("-password")
+            .then(users => {
+                return users;
+            }).catch(err => {
+                throw err;
+            })
+    }
+
+    delAllUser() {
+        return this.User.deleteMany()
+            .catch(err => {
+                throw err;
+            })
     }
 
     /*  WISH  */
