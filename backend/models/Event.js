@@ -33,7 +33,7 @@ class Event {
     /**
      * 
      * @param {string} eventID 
-     * @param {dictionary} patch_body {username/userid: string, add: boolean}
+     * @param {dictionary} patch_body {username: string, add: boolean}
      * @returns 
      */
     static update(eventID, patch_body){

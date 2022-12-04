@@ -1,59 +1,45 @@
-/*
+const express = require("express");
+const router = express.Router();
+const Wish = require("../models/Wish");
 
-    /api/announcement/...
+/* Get all wishes from all resident */
+router.get("/", async (_req, res) => {
+  try {
+    const wishes = await Wish.getAll(true);
+    res.status(200).json({ wishes });
+  } catch (err) {
+    handleError(err, res, 500);
+  }
+});
 
-*/
-const express = require('express')
-const router = express.Router()
-// const {handleError} = require('../controllers/performance')
-// const {isTokenValid, isUserAuthorized} = require("../controllers/session");
-// models
-const Wish = require('../models/Wish')
-const User = require('../models/User');
+/* Get all wishes from a resident */
+router.get("/:username", async (req, res) => {
+  try {
+    const wishes = await Wish.getResidentWishes(req.params);
+    res.status(200).json({ wishes });
+  } catch (err) {
+    handleError(err, res, 500);
+  }
+});
 
-router.get('/', async (req, res) =>{
-    try{
-        // // Check if this token is valid
-        // let tokenValid = await isTokenValid(req.headers.authorization);
-        // if (req.body.userid == "0001") {
-        //     tokenValid = true; // For integration test
-        // }
-        // if (!tokenValid) throw "Invalid Token Exception";
+/* Change a wish from a specific resident */
+router.put("/:username/:content", async (req, res) => {
+  try {
+    let wish = await Wish.update(req.params, req.body);
+    res.status(200).json(wish);
+  } catch (err) {
+    handleError(err, res, 500);
+  }
+});
 
-        const wishes = await Wish.getAll()
-        res.status(200).json(wishes)
-    } catch(err){
-        // handleError(err, res, 500);
-    }
-})
+/* Create a new wish */
+router.post("/", async (req, res) => {
+  try {
+    let wish = await Wish.save(req.body);
+    res.json(wish);
+  } catch (err) {
+    handleError(err, res, 500);
+  }
+});
 
-router.post('/', async (req, res) =>{
-    try{
-        // Check if this token is valid
-
-        // let tokenValid = await isTokenValid(req.headers.authorization);
-        // if (req.body.userid == "0001") {
-        //     tokenValid = true; // For integration test
-        // }
-        // if (!tokenValid) throw "Invalid Token Exception";
-        // // get user role
-        // if (req.body.userid != "0001") {
-        //     let userAuthorized = await isUserAuthorized(req.body.userid, req.body.username);
-        //     if (!userAuthorized) throw "Unauthorized User Exception";
-        // }
-
-
-        var newWish = new Wish({
-            userid : req.body.userid,
-            content: req.body.content,
-        })
-        newWish = await newWish.save()
-        res.status(201).json(newWish)
-    } catch(err){
-        console.log(err);
-        // handleError(err, res, 500);
-    }
-
-})
-
-module.exports = router
+module.exports = router;
