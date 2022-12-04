@@ -48,22 +48,21 @@ const displayWishes = (wishes) => {
 }
 
 const postWish = async () => {
-    $("#successModal").modal("show");
-    // const body = {
-    //     //TODO: Get Username
-    //     username: 'Boe',
-    //     //TODO: Check null input
-    //     content: document.querySelector("#wish-input").value,
-    // }
+    const body = {
+        //TODO: Get Username
+        username: 'Boe',
+        //TODO: Check null input
+        content: document.querySelector("#wish-input").value,
+    }
 
-    // apiClient.postWish(body).then( async (httpRes) => {
-    //     const status = httpRes.status;
-    //     const res = await httpRes.json();
-    //     if (status === 200) {
-    //         $("#successModal").modal("show");
-    //         return res;
-    //     }
-    //   })
+    apiClient.postWish(body).then( async (httpRes) => {
+        const status = httpRes.status;
+        const res = await httpRes.json();
+        if (status === 200) {
+            $("#successModal").modal("show");
+            return res;
+        }
+      })
 }
 
-// getWishesAndDisplay('Boe');
+getWishesAndDisplay('Boe');
