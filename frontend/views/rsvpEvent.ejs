@@ -15,32 +15,41 @@
 <body>
 
     <%- include("./partials/header.ejs") %>
-    <div class="container-fluid">
+   
+
+    <div class="container-fluid ">
+        <button class="btn btn-primary btn-lg btn-block" type="button" id="create_event_btn" style="display: block;">
+            Create Event
+          </button>
+          <div id="messages" class="chat__messages"></div>
         <% for(let i = 0 ; i < events.length ; i++)  { %>
-        <div class="card w-75">
+        <div class="card w-95" style="top:6%; margin-bottom:16px;">
             <div class="card-body">
               <h5 class="card-title"> <%= events[i].title %></h5>
               <p class="card-text">Location: <%= events[i].location %></p>
               <p class="card-text"><%= events[i].start_time %> to <%= events[i].end_time %> </p>
               
-          <div style="display: flex; justify-content: space-between;">
-            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample<%= i%>" aria-expanded="false" aria-controls="collapseExample">
+          <div class="button-event" style="display: flex; justify-content: space-between;" >
+            <button class="btn" type="button" data-toggle="collapse" data-target="#collapseExample<%= i%>" aria-expanded="false" aria-controls="collapseExample">
                 Know More
               </button>
-              <button class="btn btn-primary" type="button" onclick="func('<%= events[i]._id %>')">
+              <button class="btn" type="button" onclick="update('<%= events[i]._id %>')">
                 RSVP
               </button>
+
+
           </div>
            
             </div>
           </div>
-<div class="collapse" id="collapseExample<%= i%>" style="width:75%">
+<div class="collapse" id="collapseExample<%= i%>" style="margin-top: 16px;">
   <div class="card card-body">
     <%= events[i].description %>
   </div>
 </div>
 <% } %>
-        </div>
+  </div>
+  <%- include("./partials/successModal.ejs", {be_posted: "event", redirect_to: '/events' }) %>
    
 <%- include("./partials/footer.ejs") %>
 
@@ -56,5 +65,32 @@
 <script src="../utils/http.js"></script>
 <script src="../utils/api.js"></script>
 <script src="../utils/event.js"></script>
+<script id="message-template" type="text/html">
+    <div class="card w-95" style="top:6%;">
+        <div class="card-body">
+          <h5 class="card-title"> {{title}}</h5>
+          <p class="card-text">{{location}}</p>
+          <p class="card-text">{{start_time}} to {{end_time}} </p>
+          
+      <div style="display: flex; justify-content: space-between;">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target='#collapseExample{{id}}' aria-expanded="false" aria-controls="collapseExample">
+            Know More
+          </button>
+          <button class="btn btn-primary" type="button" onclick="update('{{_id }}')">
+            RSVP
+          </button>
+
+
+      </div>
+       
+        </div>
+      </div>
+<div class="collapse" id='collapseExample{{_id}}' style="margin-top: 16px;">
+<div class="card card-body">
+{{description }}
+</div>
+</div>
+  </script>
+<script src="utils/common.js"></script>
 </body>
 </html>

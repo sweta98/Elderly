@@ -49,6 +49,8 @@ const displayNewWishes = (newWishes) => {
   }
 
   document.querySelector(".new-wishes-table").innerHTML = displayHTML;
+  const btn = document.getElementById("new-btn");
+  btn.innerHTML = `${newWishes.length}`;
 };
 
 const displayInProgressWishes = (inProgressWishes) => {
@@ -77,6 +79,8 @@ const displayInProgressWishes = (inProgressWishes) => {
   }
 
   document.querySelector(".in-progress-wishes-table").innerHTML = displayHTML;
+  const btn = document.getElementById("progress-btn");
+  btn.innerHTML = `${inProgressWishes.length}`;
 };
 
 const displayCompletedWishes = (completedWishes) => {
@@ -104,6 +108,8 @@ const displayCompletedWishes = (completedWishes) => {
   }
 
   document.querySelector(".completed-wishes-table").innerHTML = displayHTML;
+  const btn = document.getElementById("completed-btn");
+  btn.innerHTML = `${completedWishes.length}`;
 };
 
 const fetchWishToUpdate = async (url, username, wish) => {

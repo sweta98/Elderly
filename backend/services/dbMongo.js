@@ -204,7 +204,7 @@ class DBMongo {
         }
     }
     getAllEvents() {
-        return this.Event.find({})
+        return this.Event.find({}).sort({createdAt:-1})
             .then(events => {
                 return events;
             }).catch(err => {

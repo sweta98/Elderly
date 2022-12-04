@@ -163,3 +163,7 @@ background-color:#FEFFC0 ;
 .card-header-comp {
   background-color: #ABFFB8;
 }
+
+#new-btn, #progress-btn, #completed-btn {
+  background-color: white;
+}
