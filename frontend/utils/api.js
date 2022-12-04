@@ -39,6 +39,12 @@ class ApiClient {
   fetchWish = (url) => {
     return this.httpClient.getJsonFromApi(url);
   };
+  enableTutorial = (url, body) => {
+    return this.httpClient.patchJsonToApi(url, body);
+  };
+  disableTutorial = (url, body) => {
+    return this.httpClient.patchJsonToApi(url, body);
+  };
 }
 
 const apiClient = new ApiClient();
