@@ -7,13 +7,21 @@ class ApiClient {
     return this.httpClient.getJsonFromApi("events");
   };
 
-  fetchAllNeeds = () => {
-    console.log("fetchallneeds");
-    return this.httpClient.getJsonFromApi("manageNeeds");
+  fetchAllWishes = () => {
+    return this.httpClient.getJsonFromApi("wishes");
   };
-  updateNeed = (url, body) => {
+  updateWish = (url, body) => {
     return this.httpClient.putJsonToApi(url, body);
   };
+
+  getWishesByUser = (username) => {
+    return this.httpClient.getJsonFromApi("wishes/" + username);
+  };
+
+  postWish = (body) => {
+    return this.httpClient.postJsonToApi("wishes/", body);
+  };
+
 }
 const apiClient = new ApiClient();
 visualViewport;

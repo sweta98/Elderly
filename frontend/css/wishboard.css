@@ -13,6 +13,9 @@
 .wish-wished {
     background-color: #FFCECE;
 }
+.card {
+    margin-top: 16px;
+}
 .wish-item {
     margin-top: 20px;
     height: 50px;
@@ -23,7 +26,7 @@
     width: 25%;
 }
 .wish-item-time {
-    width: 25%;
+    width: 40%;
 }
 .wish-item-status {
     width: 40%;

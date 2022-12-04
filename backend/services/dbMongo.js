@@ -17,7 +17,6 @@ class DBMongo {
 
         this.User = require('./mongoose/userModel');
         this.Wish = require('./mongoose/wishModel')
-        this.Needs = require("./mongoose/needsModel");
         this.Tutorial = require('./mongoose/tutorialModel');
         this.Event = require('./mongoose/eventModel');
     }
@@ -66,30 +65,56 @@ class DBMongo {
             });
     }
 
-  getAllNeeds() {
-    try {
-      return this.Needs.find();
-    } catch (err) {
-      throw err;
+    /*  WISH  */
+    getAllWishes() {
+        try {
+          return this.Wish.find();
+        } catch (err) {
+          throw err;
+        }
     }
-  }
-  updateNeed(params, data) {
-    const filter = {};
-    if (data.status) {
-      filter["status"] = data.status;
+
+    addWish(wish) {
+        const newWish = new this.Wish({
+            username: wish.username,
+            content: wish.content,
+            priority: wish.priority,
+            status: wish.status,
+        });
+        try {
+            return newWish.save();
+        } catch (err) {
+            throw err;
+        }
     }
-    if (data.priority) {
-      filter["priority"] = data.priority;
+
+    updateWish(params, data) {
+        const filter = {};
+        if (data.status) {
+          filter["status"] = data.status;
+        }
+        if (data.priority) {
+          filter["priority"] = data.priority;
+        }
+        try {
+          return this.Wish.updateOne(
+            { username: params.username, content: params.content },
+            filter
+          );
+        } catch (err) {
+          throw err;
+        }
     }
-    try {
-      return this.Needs.updateOne(
-        { resident: params.resident, need: params.need },
-        filter
-      );
-    } catch (err) {
-      throw err;
+
+    getResidentAllWishes(params) {
+        try {
+            return this.Wish.find({ username: params.username });
+        } catch (err) {
+            throw err;
+        }
     }
-  }
+
+
   deleteUserfromEvent(eventID, username){
     try{
         return this.Event.updateOne(
@@ -99,43 +124,7 @@ class DBMongo {
         throw err;
     }
   }
-  /* Wish */
-  addWish(wish) {
-      const newWish = new this.Wish({
-          // userid: mongoose.Types.ObjectId(wish.userid), TODO: change back when User feature complete
-          userid: wish.userid,
-          content: wish.content,
-          timestamp: wish.timestamp,
-          status: "wished",
-      });
-      try {
-          return newWish.save()
-      } catch (err) {
-          throw { status: 501, message: err };
-      }
-  }
 
-  getAllWish() {
-      return this.Wish.find()
-          .select("userid content timestamp")
-          // .populate("userid", "username")
-          .sort({ "time": -1 })
-          .then(wishes => {
-              return wishes
-          }).catch(err => {
-              throw err;
-          })
-  }
-
-  paginateWish(query, options) {
-      return this.Wish.paginate({ content: { $regex: query.query, $options: 'i' } }, options)
-          .then(results => {
-              return results
-          })
-          .catch(err => {
-              throw err;
-          })
-  }
 
 getAllEvents(){
   return this.Event.find({})
@@ -192,47 +181,6 @@ getAllEvents(){
         }
     }
 
-    /* MANAGE NEEDS */
-
-    addNeed(need) {
-        const newNeed = new this.Needs({
-            resident: need.resident,
-            need: need.need,
-            priority: need.priority,
-            status: need.status,
-        });
-        try {
-            return newNeed.save();
-        } catch (err) {
-            throw err;
-        }
-    }
-
-    getAllNeeds() {
-        try {
-            return this.Needs.find();
-        } catch (err) {
-            throw err;
-        }
-    }
-
-    updateNeed(params, data) {
-        const filter = {};
-        if (data.status) {
-            filter["status"] = data.status;
-        }
-        if (data.priority) {
-            filter["priority"] = data.priority;
-        }
-        try {
-            return this.Needs.updateOne(
-                { resident: params.resident, need: params.need },
-                filter
-            );
-        } catch (err) {
-            throw err;
-        }
-    }
 
     /* TUTORIAL */
 

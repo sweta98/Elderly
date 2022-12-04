@@ -1,37 +1,32 @@
-const mongoose = require('mongoose');
-const mongoosePaginate = require('mongoose-paginate-v2');
+const mongoose = require("mongoose");
 
-
-/*
-WISH:
-*/
 const WishSchema = new mongoose.Schema({
-    userid:{
-        // type: mongoose.Types.ObjectId, TODO: changed back when User feature complete
-        type: String,
-        ref: 'User',
-        required: true
-    },
-    timestamp:{
-        type : Date,
-        default: Date.now
-    },
-    content:{
-        type: String,
-        required: true
-    },
-    status: {
-        type: String,
-        default: "wished"
-    },
-    priority: {
-        type: String,
-        // required: true
-    },
+  username: {
+    // type: mongoose.Types.ObjectId, TODO: changed back when User feature complete
+    type: String,
+    required: true,
+    trim: true,
+    // ref: 'User'
+  },
+  content: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  priority: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  status: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  timestamp:{
+    type : Date,
+    default: Date.now
+  },
+});
 
-
-})
-
-WishSchema.plugin(mongoosePaginate);
-
-module.exports = mongoose.model('Wish', WishSchema)
+module.exports = mongoose.model("Wish", WishSchema);

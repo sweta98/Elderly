@@ -29,6 +29,7 @@ if ("webkitSpeechRecognition" in window) {
       // Set the Final transcript and Interim transcript.
       document.querySelector("#final").innerHTML = final_transcript;
       document.querySelector("#interim").innerHTML = interim_transcript;
+      final_transcript = interim_transcript.length===0 ? final_transcript : interim_transcript;
     };
   
     // Set the onClick property of the start button
@@ -40,6 +41,7 @@ if ("webkitSpeechRecognition" in window) {
     document.querySelector("#finish-recording-btn").onclick = () => {
       // Stop the Speech Recognition
       speechRecognition.stop();
+      console.log(final_transcript)
       document.querySelector("#final").innerHTML = '';
       document.querySelector("#wish-input").value = final_transcript;
     };
