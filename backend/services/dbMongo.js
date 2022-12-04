@@ -136,15 +136,6 @@ class DBMongo {
               throw err;
           })
   }
-
-getAllEvents(){
-  return this.Event.find({})
-      .then(events => {
-          return events;
-      }).catch(err => {
-          throw err;
-      })
-}
     /*  EVENT  */
 
     deleteUserfromEvent(eventID, username) {

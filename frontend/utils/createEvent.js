@@ -1,4 +1,3 @@
-// import {ApiClient} from "./api.js"
 var date_input=$('#date'); 
 var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
 var options={
