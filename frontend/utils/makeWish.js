@@ -1,3 +1,7 @@
+function autoFill(value) {
+    document.getElementById('wish-input').value = "I need " + value
+}
+
 const mapStatusToClassName = {
     'New': 'list-group-item-danger',
     'In Progress': 'list-group-item-warning',
