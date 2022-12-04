@@ -30,8 +30,23 @@ function update(eventId) {
 
 fetchEvents();
 
+
+//handle socket event creation
 const socket = io('/');
 socket.on('createEvent', data => {
     console.log(data)
 })
+
+//handle create event button based on role type
+const create_event_btn = document.getElementById("create_event_btn")
+create_event_btn.onclick = () =>{
+  window.location.replace("/createEvent");
+}
+window.onload = () =>{
+  if (window.localStorage.getItem("role") == "staff"){
+      create_event_btn.style.display = "block";
+  } else{
+      create_event_btn.style.display = "none";
+  }
+}
 
