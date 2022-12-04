@@ -11,3 +11,8 @@ function loginAsStaff(username){
   localStorage.setItem("role", "staff");
   window.location.replace("/");
 }
+
+function logout() {
+  localStorage.clear();
+  window.location.replace("/login");
+}
