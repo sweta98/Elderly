@@ -48,7 +48,7 @@ router.use("/api/users", require("./users"));
 router.use("/", require("./tutorials"));
 router.use('/api/wishes', require('./wishes'))
 router.use('/api/makeWishes', require('./wishes'))
-router.use("/api/manageNeeds", require("./manageNeeds"));
+router.use("/api/manageWishes", require("./wishes"));
 router.use('/api/events', require('./events'))
 router.use('/api/auth', require('./auth')) // Used for creating new users
 
