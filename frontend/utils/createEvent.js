@@ -20,6 +20,7 @@ function getData(form) {
 
 const submitEvent = (e) => {
   e.preventDefault();
+  $("successModal").modal("show");
   let post_body = getData(e.target);
   console.log(post_body)
   apiClient.createEvent(post_body).then(async (httpRes) => {
@@ -34,7 +35,6 @@ const submitEvent = (e) => {
 
 //submit form  
 event_form.addEventListener("submit", submitEvent);
-
 
 //calendar
 date_input.datepicker(options)

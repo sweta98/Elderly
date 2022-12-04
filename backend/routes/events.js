@@ -31,11 +31,12 @@ router.patch('/:eventID', async (req, res) =>{
 
 router.post('/', async (req, res) => {
     try{
-        var newEvent = new Event(req.body);
-        newEvent = await newEvent.save();
-
-        //TODO do we need to return the newly created event?
-        res.status(201).json(newEvent);
+        var new_event = new Event(req.body);
+        new_event.save().then((event) => {
+            var io = req.app.get('socketio');
+            io.emit("createEvent", event);
+            res.status(201)
+        });
     }catch(err){
         handleError(err, res, 400);
     }
