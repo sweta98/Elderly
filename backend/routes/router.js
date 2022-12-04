@@ -10,8 +10,8 @@ router.get("/", (req, res) => {
   res.render(CWD + '/frontend/views/index')
  //   res.sendFile(CWD + "/frontend/views/index.html");
   });
-  router.get("/manageNeeds", (req, res) => {
-    res.render(CWD + '/frontend/views/manageNeeds')
+  router.get("/manageWishes", (req, res) => {
+    res.render(CWD + '/frontend/views/manageWishes')
   //  res.sendFile(CWD + "/frontend/views/manageNeeds.html");
   });
   router.get('/events', async(req, res) => {
