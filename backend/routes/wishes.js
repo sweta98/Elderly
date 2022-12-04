@@ -23,7 +23,7 @@ router.get("/:username", async (req, res) => {
 });
 
 /* Change a wish from a specific resident */
-router.put("/:username/:wish", async (req, res) => {
+router.put("/:username/:content", async (req, res) => {
   try {
     let wish = await Wish.update(req.params, req.body);
     res.status(200).json(wish);

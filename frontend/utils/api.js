@@ -8,8 +8,7 @@ class ApiClient {
   };
 
   fetchAllWishes = () => {
-    console.log("fetchallwishes");
-    return this.httpClient.getJsonFromApi("manageWishes");
+    return this.httpClient.getJsonFromApi("wishes");
   };
   updateWish = (url, body) => {
     return this.httpClient.putJsonToApi(url, body);
