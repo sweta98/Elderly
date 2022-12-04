@@ -1,6 +1,6 @@
 const $eventstream = document.getElementById("eventstream");
-const events = document.getElementById("events").innerHTML;
-
+const $eventTemplate = document.getElementById("events").innerHTML;
+var eventsArray;
 
 const fetchEvents = async () => {
   apiClient.fetchAllEvents().then(async (httpRes) => {
@@ -8,27 +8,12 @@ const fetchEvents = async () => {
       const res = await httpRes.json();
     if (status === 200) {
           console.log(res.events);
-          $eventstream.innerHTML = "";
-          res.events.forEach((event) => {
-
-            renderMessage(event);
-        });
+          eventsArray = res.events;
       }
   });
 };
-const renderMessage = (message) => {
 
-const eventDisplay = {
-  title: message.title,
-  description: message.description,
-  end_time: message.end_time,
-      start_time: message.start_time,
-      date: message.date,
-      location: message.location
-  };
-console.log($eventstream)
-  const messageHtml = Mustache.render(events, eventDisplay);
-  $eventstream.insertAdjacentHTML("beforeend", messageHtml);
-};
-
+function func(vartest) {
+  console.log(vartest);
+}
 fetchEvents();

@@ -45,7 +45,7 @@
         </div>
         <input type="input" class="form-control" id="wish-input" placeholder="Type in what you want">
         <div class="button-container">
-            <button id="submit-btn" class="btn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#successModal">Submit</button>
+            <button id="submit-btn" class="btn" type="button" class="btn btn-primary" data-toggle="modal" onclick="postWish()">Submit</button>
         </div>
         
     </div>
@@ -92,6 +92,8 @@
 
 
 
+<script src="../utils/http.js"></script>
+<script src="../utils/api.js"></script>
 <script src="../utils/makeWish.js"></script>
 <script src="../utils/speechRecognition.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

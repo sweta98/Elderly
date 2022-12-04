@@ -12,10 +12,12 @@
     margin-top: 30px;
     margin-left: 10px;
     margin-right: 10px;
+    font-size: 1.5rem;
 }
 
 .datepicker {
     background-color: #f8f9fa;
+    font-size: var(--text-socialworker);
     margin-top: 60px;
 }
 
