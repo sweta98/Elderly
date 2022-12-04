@@ -54,9 +54,7 @@ const postWish = async () => {
         return ;
     }
     const body = {
-        //TODO: Get Username
-        username: 'Boe',
-        //TODO: Check null input
+        username: localStorage.getItem("username"),
         content: content,
     }
 
@@ -69,5 +67,4 @@ const postWish = async () => {
         }
       })
 }
-
-getWishesAndDisplay('Boe');
+getWishesAndDisplay(localStorage.getItem("username"));
