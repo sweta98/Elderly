@@ -3,6 +3,7 @@ const express = require('express')
 var DB = require('./backend/services/dbMongo');
 var DAO = require('./backend/services/DAO');
 const path =  require("path");
+const socket = require('./backend/sockets/socket');
 
 // Setup DB
 DAO.db = new DB();
@@ -35,9 +36,10 @@ app.use(express.static(__dirname+'/frontend'))
 // http server and socket
 const server = require('http').createServer(app)
 
-// Setup socket?
-const {setUpSocket} = require('./backend/sockets/socket')
-setUpSocket(server)
+// setup socket
+const socketio = new socket();
+const io = socketio.getInstance(server);
+app.set('socketio', io.of('/'));
 
 server.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`)

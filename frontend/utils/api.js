@@ -23,7 +23,7 @@ class ApiClient {
     fetchAllWishes = () => {
         return this.httpClient.getJsonFromApi("wishes");
     };
-    
+
     updateWish = (url, body) => {
         return this.httpClient.putJsonToApi(url, body);
     };
@@ -49,3 +49,4 @@ class ApiClient {
 
 const apiClient = new ApiClient();
 visualViewport;
+
