@@ -7,6 +7,12 @@ body {
     margin-bottom: 80px;
     margin-top: 60px;
     font-family: 'Open Sans';
+    background-color: #f6fff9;
+}
+
+.container-fluid {
+    text-align: center;
+    height: 80vh;
 }
 
 .footer {
@@ -25,10 +31,6 @@ body {
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 }
 
-.container-fluid {
-    text-align: center;
-    height:50vh;
-}
 
 #userinfo-container {
     position: relative;

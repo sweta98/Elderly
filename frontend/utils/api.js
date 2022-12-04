@@ -1,19 +1,51 @@
 class ApiClient {
-  constructor(host, port) {
-    this.httpClient = new HTTPClient(host, port);
-  }
+    constructor(host, port) {
+        this.httpClient = new HTTPClient(host, port);
+    }
 
-  fetchAllEvents = () => {
-    return this.httpClient.getJsonFromApi("events");
-  };
+    fetchAllEvents = () => {   
+        return this.httpClient.getJsonFromApi("events");
+    };
 
-  fetchAllWishes = () => {
-    console.log("fetchallwishes");
-    return this.httpClient.getJsonFromApi("manageWishes");
+    createEvent = (post_body) => {   
+        return this.httpClient.postJsonToApi("events", post_body);
+    };
+
+    fetchAllNeeds = () => {
+        console.log("fetchallneeds");
+        return this.httpClient.getJsonFromApi("manageNeeds");
+    };
+
+    updateNeed = (url, body) => {
+        return this.httpClient.putJsonToApi(url, body);
+    };
+
+    fetchAllWishes = () => {
+        return this.httpClient.getJsonFromApi("wishes");
+    };
+    
+    updateWish = (url, body) => {
+        return this.httpClient.putJsonToApi(url, body);
+    };
+
+    getWishesByUser = (username) => {
+        return this.httpClient.getJsonFromApi("wishes/" + username);
+    };
+
+    postWish = (body) => {
+        return this.httpClient.postJsonToApi("wishes/", body);
+    };
+
+  fetchWish = (url) => {
+    return this.httpClient.getJsonFromApi(url);
   };
-  updateWish = (url, body) => {
-    return this.httpClient.putJsonToApi(url, body);
+  enableTutorial = (url, body) => {
+    return this.httpClient.patchJsonToApi(url, body);
+  };
+  disableTutorial = (url, body) => {
+    return this.httpClient.patchJsonToApi(url, body);
   };
 }
+
 const apiClient = new ApiClient();
 visualViewport;

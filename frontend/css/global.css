@@ -1,0 +1,28 @@
+:root {
+    --yankeesBlue: #12263A;
+    --mustardGreen: #697821;
+    --americanSilver: #C5D8D1;
+    --sonicSilver: #767575;
+    --philippineSilver: #B1B1B1;
+    --platinum: #E4E4E4;
+    --heading_one : 2rem;
+    --heading_two: 1.5rem;
+    --text_senior: 1.25rem;
+    --text_social_worker: 1rem
+}
+
+.heading-one {
+    font-size: 2rem;
+}
+
+.heading-two {
+    font-size: 1.5rem;
+}
+
+.text-senior {
+    font-size: 1.25rem;
+}
+
+.text-socialworker {
+    font-size: 1rem;
+}

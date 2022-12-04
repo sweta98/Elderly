@@ -3,7 +3,7 @@ const updateWish = () => {
   const wishStatus = document.getElementById("wish-status").value;
   const modal = document.getElementById("exampleModalLabel").innerHTML;
   const myArray = modal.split("'s ");
-  const url = `manageWishes/${myArray[0]}/${myArray[1]}`;
+  const url = `wishes/${myArray[0]}/${myArray[1]}`;
   const body = {
     priority: wishPriority,
     status: wishStatus,
@@ -11,11 +11,16 @@ const updateWish = () => {
   updateResidentWish(url, body);
 };
 
-const displayModal = (button) => {
+const displayModal = async (button) => {
   const username = button.dataset.username;
   const wish = button.dataset.wish;
   const modal = document.getElementById("exampleModalLabel");
   modal.innerHTML = username + "'s " + wish;
+  const wishDetails = await fetchWishToUpdate(
+    `wishes/?username=${username}&content=${wish}`,
+    username,
+    wish
+  );
 };
 
 const displayNewWishes = (newWishes) => {
@@ -27,7 +32,7 @@ const displayNewWishes = (newWishes) => {
     <td>${newWishes[i].username}</td>
     <td>${newWishes[i].content}</td>
     <td>
-      <button class="edit-button" data-toggle="modal" data-target="#exampleModal" data-resident="${newWishes[i].username}" data-need="${newWishes[i].content}" onclick = displayModal(this)>
+      <button class="edit-button" data-toggle="modal" data-target="#exampleModal" data-username="${newWishes[i].username}" data-wish="${newWishes[i].content}" onclick = displayModal(this)>
         <img id="edit-image" src="img/edit.png" />
       </button>
     </td>
@@ -55,7 +60,7 @@ const displayInProgressWishes = (inProgressWishes) => {
       <td>${inProgressWishes[i].username}</td>
       <td>${inProgressWishes[i].content}</td>
       <td>
-        <button class="edit-button" data-toggle="modal" data-target="#exampleModal" data-resident="${inProgressWishes[i].username}" data-need="${inProgressWishes[i].content}" onclick = displayModal(this)>
+        <button class="edit-button" data-toggle="modal" data-target="#exampleModal" data-username="${inProgressWishes[i].username}" data-wish="${inProgressWishes[i].content}" onclick = displayModal(this)>
           <img id="edit-image" src="img/edit.png" />
         </button>
       </td>
@@ -83,7 +88,7 @@ const displayCompletedWishes = (completedWishes) => {
         <td>${completedWishes[i].username}</td>
         <td>${completedWishes[i].content}</td>
         <td>
-          <button class="edit-button" data-toggle="modal" data-target="#exampleModal" data-resident="${completedWishes[i].username}" data-need="${completedWishes[i].content}" onclick = displayModal(this)>
+          <button class="edit-button" data-toggle="modal" data-target="#exampleModal" data-username="${completedWishes[i].username}" data-wish="${completedWishes[i].content}" onclick = displayModal(this)>
             <img id="edit-image" src="img/edit.png" />
           </button>
         </td>
@@ -99,6 +104,51 @@ const displayCompletedWishes = (completedWishes) => {
   }
 
   document.querySelector(".completed-wishes-table").innerHTML = displayHTML;
+};
+
+const fetchWishToUpdate = async (url, username, wish) => {
+  apiClient.fetchWish(url).then(async (httpRes) => {
+    const status = httpRes.status;
+    const res = await httpRes.json();
+    if (status === 200) {
+      let selectStatus = document.getElementById("wish-status");
+      let selectPriority = document.getElementById("wish-priority");
+
+      switch (res.wishes[0].status) {
+        case "New":
+          selectStatus.selectedIndex = 0;
+          break;
+        case "In Progress":
+          selectStatus.selectedIndex = 1;
+          break;
+        case "Completed":
+          selectStatus.selectedIndex = 2;
+          break;
+        default:
+          selectStatus.selectedIndex = 0;
+          break;
+      }
+
+      switch (res.wishes[0].priority) {
+        case "Low":
+          selectPriority.selectedIndex = 0;
+          break;
+        case "Medium":
+          selectPriority.selectedIndex = 1;
+          break;
+        case "High":
+          selectPriority.selectedIndex = 2;
+          break;
+        default:
+          selectPriority.selectedIndex = 0;
+          break;
+      }
+
+      const modal = document.getElementById("exampleModalLabel");
+      modal.innerHTML = username + "'s " + wish;
+      return res.wishes;
+    }
+  });
 };
 
 const updateResidentWish = async (url, body) => {

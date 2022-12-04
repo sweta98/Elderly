@@ -14,18 +14,7 @@
 
 <body>
 
-    <nav class="navbar fixed-top navbar-light bg-light">
-        <h2 class="navbar-brand mb-0">
-            Facility Genie
-        </h2>
-        <!-- <img src="img/logo.png" style="height: 50px;"> -->
-        <button id="logout" type="button" class="btn btn-secondary">
-            <span>
-                <i class="material-icons" style="float: left;">logout</i>
-                Logout
-            </span>
-        </button>
-    </nav>
+  <%- include("./partials/header.ejs") %>  
 
     <div class="container-fluid">
         <div id="wish-bubbles-container" class="wish-bubbles-container">
@@ -49,14 +38,14 @@
 
     <div class="input-container">
         <div id="microphone-container" data-toggle="modal" data-target="#recordingModal">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-mic-fill" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-mic-fill" viewBox="0 0 16 16">
                 <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3z"/>
                 <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
             </svg>
         </div>
         <input type="input" class="form-control" id="wish-input" placeholder="Type in what you want">
         <div class="button-container">
-            <button id="submit-btn" class="btn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#successModal">Submit</button>
+            <button id="submit-btn" class="btn" type="button" class="btn btn-primary" data-toggle="modal" onclick="postWish()">Submit</button>
         </div>
         
     </div>
@@ -101,35 +90,11 @@
     </div>
   </div>
 
-<footer class="footer">
-    <div id="buttonGroup" class="btn-group selectors" role="group">
-        <button id="home" type="button" class="btn btn-secondary button-inactive">
-            <div class="selector-holder">
-                <i class="material-icons">home</i>
-                <span>Home</span>
-            </div>
-        </button>
-        <button id="wishboard" type="button" class="btn btn-secondary button-active">
-            <div class="selector-holder">
-                <i class="material-icons">card_giftcard</i>
-                <span>WishBoard</span>
-            </div>
-        </button>
-        <button id="tutorials" type="button" class="btn btn-secondary button-inactive">
-            <div class="selector-holder">
-                <i class="material-icons">ondemand_video</i>
-                <span>Tutorials</span>
-            </div>
-        </button>
-        <button id="events" type="button" class="btn btn-secondary button-inactive">
-            <div class="selector-holder">
-                <i class="material-icons">event_available</i>
-                <span>Events</span>
-            </div>
-        </button>
-    </div>
-</footer>
+  <%- include("./partials/footer.ejs") %>
 
+
+<script src="../utils/http.js"></script>
+<script src="../utils/api.js"></script>
 <script src="../utils/makeWish.js"></script>
 <script src="../utils/speechRecognition.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
