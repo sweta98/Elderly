@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const {handleError} = require('../controllers/errorHandler')
 const Wish = require("../models/Wish");
 
 /* Get all wishes from all resident */
@@ -32,8 +33,13 @@ router.get("/:username", async (req, res) => {
 /* Change a wish from a specific resident */
 router.put("/:username/:content", async (req, res) => {
   try {
-    let wish = await Wish.update(req.params, req.body);
-    res.status(200).json(wish);
+    let wish = await Wish.update(req.params, req.body).then((event) => {
+      //Socket
+    var io = req.app.get('socketio')
+    console.log(event);
+    io.emit("updateWish", event)
+    res.status(200).json(event);
+    });
   } catch (err) {
     handleError(err, res, 500);
   }

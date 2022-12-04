@@ -156,7 +156,7 @@ const updateResidentWish = async (url, body) => {
     const status = httpRes.status;
     const res = await httpRes.json();
     if (status === 200) {
-      window.location.reload();
+      //window.location.reload();
       return res;
     }
   });
@@ -181,5 +181,10 @@ const fetchWishes = async () => {
     }
   });
 };
+
+const socket = io('/');
+socket.on('updateWish', data => {
+  console.log(data);
+})
 
 fetchWishes();
