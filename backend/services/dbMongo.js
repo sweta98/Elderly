@@ -66,9 +66,9 @@ class DBMongo {
     }
 
     /*  WISH  */
-    getAllWishes() {
+    getAllWishes(filter) {
         try {
-          return this.Wish.find();
+          return this.Wish.find(filter);
         } catch (err) {
           throw err;
         }
