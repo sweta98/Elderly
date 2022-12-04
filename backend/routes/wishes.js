@@ -3,9 +3,16 @@ const router = express.Router();
 const Wish = require("../models/Wish");
 
 /* Get all wishes from all resident */
-router.get("/", async (_req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const wishes = await Wish.getAll(true);
+    const filter = {};
+    if (req.query.username) {
+      filter["username"] = req.query.username;
+    }
+    if (req.query.content) {
+      filter["content"] = req.query.content;
+    }
+    const wishes = await Wish.getAll(filter);
     res.status(200).json({ wishes });
   } catch (err) {
     handleError(err, res, 500);

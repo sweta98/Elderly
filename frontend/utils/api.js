@@ -36,6 +36,9 @@ class ApiClient {
         return this.httpClient.postJsonToApi("wishes/", body);
     };
 
+  fetchWish = (url) => {
+    return this.httpClient.getJsonFromApi(url);
+  };
 }
 
 const apiClient = new ApiClient();

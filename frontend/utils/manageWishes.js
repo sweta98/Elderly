@@ -11,11 +11,16 @@ const updateWish = () => {
   updateResidentWish(url, body);
 };
 
-const displayModal = (button) => {
+const displayModal = async (button) => {
   const username = button.dataset.username;
   const wish = button.dataset.wish;
   const modal = document.getElementById("exampleModalLabel");
   modal.innerHTML = username + "'s " + wish;
+  const wishDetails = await fetchWishToUpdate(
+    `wishes/?username=${username}&content=${wish}`,
+    username,
+    wish
+  );
 };
 
 const displayNewWishes = (newWishes) => {
@@ -99,6 +104,51 @@ const displayCompletedWishes = (completedWishes) => {
   }
 
   document.querySelector(".completed-wishes-table").innerHTML = displayHTML;
+};
+
+const fetchWishToUpdate = async (url, username, wish) => {
+  apiClient.fetchWish(url).then(async (httpRes) => {
+    const status = httpRes.status;
+    const res = await httpRes.json();
+    if (status === 200) {
+      let selectStatus = document.getElementById("wish-status");
+      let selectPriority = document.getElementById("wish-priority");
+
+      switch (res.wishes[0].status) {
+        case "New":
+          selectStatus.selectedIndex = 0;
+          break;
+        case "In Progress":
+          selectStatus.selectedIndex = 1;
+          break;
+        case "Completed":
+          selectStatus.selectedIndex = 2;
+          break;
+        default:
+          selectStatus.selectedIndex = 0;
+          break;
+      }
+
+      switch (res.wishes[0].priority) {
+        case "Low":
+          selectPriority.selectedIndex = 0;
+          break;
+        case "Medium":
+          selectPriority.selectedIndex = 1;
+          break;
+        case "High":
+          selectPriority.selectedIndex = 2;
+          break;
+        default:
+          selectPriority.selectedIndex = 0;
+          break;
+      }
+
+      const modal = document.getElementById("exampleModalLabel");
+      modal.innerHTML = username + "'s " + wish;
+      return res.wishes;
+    }
+  });
 };
 
 const updateResidentWish = async (url, body) => {
