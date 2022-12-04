@@ -1,6 +1,12 @@
 window.onload = function() {
   let currentRole = localStorage.getItem("role");
   let currentUsername = localStorage.getItem("username");
+
+  // avoid access the application through "/" without login
+  if (currentRole === null || currentUsername === null) {
+    window.location.replace("/login");
+  }
+
   if (currentRole === "resident") {
     document.getElementById("home-buttons-container-resident").style.display = "";
     document.getElementById("home-buttons-container-staff").style.display = "none";
