@@ -31,10 +31,5 @@ function tutorials() {
 }
 
 function events() {
-  const type = localStorage.getItem("role");
-  if (type === "resident") {
-    window.location.replace("/events");
-  } else {
-    window.location.replace("/createEvent");
-  }
+  window.location.replace("/events");
 }

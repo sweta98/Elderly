@@ -53,3 +53,9 @@ event_form.addEventListener("submit", submitEvent);
 
 //calendar
 date_input.datepicker(options)
+
+// window.onload = () =>{
+//   if (window.localStorage.getItem("role") != "staff" || ! window.localStorage.getItem("username")){
+//       window.location.replace("/");
+//   }
+// }

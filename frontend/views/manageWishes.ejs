@@ -15,6 +15,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="css/manageWishes.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -191,7 +192,6 @@
 
     <%- include("./partials/footer.ejs") %>
 
-
     <!-- Socket -->
     <script src="https://cdn.socket.io/4.2.0/socket.io.min.js"
     integrity="sha384-PiBR5S00EtOj2Lto9Uu81cmoyZqR57XcOna1oAuVuIEjzj0wpqDVfD0JA9eXlRsj"
@@ -216,5 +216,9 @@
     <script src="utils/api.js"></script>
     <script src="utils/common.js"></script>
     <script src="utils/manageWishes.js"></script>
+    <script>
+      document.querySelector("#wishboard").classList.remove("button-inactive");
+      document.querySelector("#wishboard").classList.add("button-active");
+  </script>
   </body>
 </html>
