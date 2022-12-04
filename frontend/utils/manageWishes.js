@@ -191,5 +191,5 @@ const fetchWishes = async () => {
 fetchWishes();
 const socket = io('/');
 socket.on('postWish', data => {
-  fetchWishes();
+  window.location.reload();
 })
