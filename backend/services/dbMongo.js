@@ -125,15 +125,15 @@ class DBMongo {
     }
   }
 
-
-getAllEvents(){
-  return this.Event.find({})
-      .then(events => {
-          return events;
-      }).catch(err => {
-          throw err;
-      })
-}
+  paginateWish(query, options) {
+      return this.Wish.paginate({ content: { $regex: query.query, $options: 'i' } }, options)
+          .then(results => {
+              return results
+          })
+          .catch(err => {
+              throw err;
+          })
+  }
     /*  EVENT  */
 
     deleteUserfromEvent(eventID, username) {

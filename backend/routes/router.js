@@ -1,30 +1,41 @@
 const express = require('express')
 const router = express.Router()
 const CWD = process.env.INIT_CWD
-
+const Event = require('../models/Event')
 /*
     URLs
 */
 // home get example
 router.get("/", (req, res) => {
-    res.sendFile(CWD + "/frontend/views/index.html");
+  res.render(CWD + '/frontend/views/index')
+ //   res.sendFile(CWD + "/frontend/views/index.html");
   });
-
-router.get('/events', (req, res) => {
-    res.sendFile(CWD + '/frontend/views/rsvpEvent.html')
+  router.get("/manageNeeds", (req, res) => {
+    res.render(CWD + '/frontend/views/manageNeeds')
+  //  res.sendFile(CWD + "/frontend/views/manageNeeds.html");
+  });
+  router.get('/events', async(req, res) => {
+    const events = await Event.getAll();
+ 
+    res.render(CWD + "/frontend/views/rsvpEvent", { events });
+    //res.sendFile(CWD + '/frontend/views/rsvpEvent.html')
+    // res.render(CWD + '/frontend/views/rsvpEvent')
 })
 
 router.get('/wishes', (req, res) => {
-    res.sendFile(CWD + '/frontend/views/wishboard.html')
+  res.render(CWD + '/frontend/views/wishboard')
+   // res.sendFile(CWD + '/frontend/views/wishboard.html')
 })
-
-router.get("/manageWishes", (req, res) => {
-    res.sendFile(CWD + "/frontend/views/manageWishes.html");
-});
 
 router.get('/makeWishes', (req, res) => {
-    res.sendFile(CWD + '/frontend/views/makeWishes.html')
+  res.render(CWD + '/frontend/views/makeWishes')
+ //   res.sendFile(CWD + '/frontend/views/makeWishes.html')
 })
+
+router.get('/createEvent', (req, res) => {
+  res.render(CWD + '/frontend/views/createEvent')
+})
+
 
 /*
     APIs
