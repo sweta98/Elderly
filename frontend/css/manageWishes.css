@@ -8,6 +8,7 @@ body {
   margin-bottom: 80px;
   margin-top: 60px;
   font-family: "Open Sans";
+  background-color: #f6fff9;
 }
 
 .footer {
@@ -151,4 +152,16 @@ table {
   text-align: center;
   margin-bottom: 30px;
   padding-top: 10px;
+}
+
+.card-header-new{
+  background-color: #FFCECE;
+}
+
+.card-header-progress {
+background-color:#FEFFC0 ;
+}
+
+.card-header-comp {
+  background-color: #ABFFB8;
 }
