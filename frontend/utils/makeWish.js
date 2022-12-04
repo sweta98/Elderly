@@ -68,3 +68,8 @@ const postWish = async () => {
       })
 }
 getWishesAndDisplay(localStorage.getItem("username"));
+
+const socket = io('/');
+socket.on('updateWish', data => {
+    getWishesAndDisplay(localStorage.getItem("username"));
+})
