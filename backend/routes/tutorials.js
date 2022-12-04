@@ -10,36 +10,9 @@ const CWD = process.env.INIT_CWD;
 // models
 const Tutorial = require('../models/Tutorial')
 
-/* Static Pages */
-
-router.get("/tutorials", async (req, res) => { // for resident
-    const tutorials = await Tutorial.getAll();
-    res.render(CWD + "/frontend/views/tutorialList.ejs", { tutorials });
-});
-
-router.get("/manageTutorials", async (req, res) => { // for staff
-    const tutorials = await Tutorial.getAll();
-
-    res.render(CWD + "/frontend/views/manageTutorial.ejs", { tutorials });
-});
-
-router.get("/tutorials/:appName", async (req, res) => { // for resident
-    const appName = req.params.appName;
-    const tutorial = await Tutorial.get(appName);
-
-    res.render(CWD + "/frontend/views/watchTutorial.ejs", { tutorial });
-});
-
-router.get("/manageTutorials/:appName", async (req, res) => { // for staff
-    const appName = req.params.appName;
-    const tutorial = await Tutorial.get(appName);
-
-    res.render(CWD + "/frontend/views/watchTutorialStaff.ejs", { tutorial });
-});
-
 /* APIs */
 
-router.get('/api/tutorials/', async (req, res) => {
+router.get('/', async (req, res) => {
     try{
         const tutorials = await Tutorial.getAll();
         res.status(200).json({tutorials});
@@ -49,7 +22,7 @@ router.get('/api/tutorials/', async (req, res) => {
     
 })
 
-router.get('/api/tutorials/app/:appName', async (req, res) => {
+router.get('/app/:appName', async (req, res) => {
     try{
         const appName = req.params.appName;
         const tutorial = await Tutorial.get(appName);
@@ -60,7 +33,7 @@ router.get('/api/tutorials/app/:appName', async (req, res) => {
     
 })
 
-router.post('/api/tutorials/', async (req, res) => {
+router.post('/', async (req, res) => {
     try{
         const tutorial = new Tutorial(req.body);
         await tutorial.save();
@@ -70,7 +43,7 @@ router.post('/api/tutorials/', async (req, res) => {
     }
 })
 
-router.get('/api/tutorials/enabled', async (req, res) => {
+router.get('/enabled', async (req, res) => {
     try{
         const tutorials = await Tutorial.getAllEnabled();
         res.status(200).json({tutorials});
@@ -80,18 +53,22 @@ router.get('/api/tutorials/enabled', async (req, res) => {
     
 })
 
-router.patch('/api/tutorials/enabled/:appName', async (req, res) =>{
+router.patch('/enabled/:appName', async (req, res) =>{
     try{
         const tutorial = await Tutorial.enable(req.params.appName);
+        const io = req.app.get('socketio');
+        io.emit("tutorial-enabled", tutorial.app);
         res.json(tutorial);
     } catch(err){
         handleError(err, res, 500);
     }
 })
 
-router.patch('/api/tutorials/disabled/:appName', async (req, res) =>{
+router.patch('/disabled/:appName', async (req, res) =>{
     try{
         const tutorial = await Tutorial.disable(req.params.appName);
+        const io = req.app.get('socketio');
+        io.emit("tutorial-disabled", tutorial.app);
         res.json(tutorial);
     } catch(err){
         handleError(err, res, 500);
