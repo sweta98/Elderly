@@ -9,6 +9,11 @@ body {
     font-family: 'Open Sans';
 }
 
+.container-fluid {
+    text-align: center;
+    height: 80vh;
+}
+
 .footer {
     position:fixed;
     bottom: 0;
