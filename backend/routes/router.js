@@ -10,13 +10,13 @@ router.get("/", (req, res) => {
   res.render(CWD + '/frontend/views/index')
  //   res.sendFile(CWD + "/frontend/views/index.html");
   });
-  router.get("/manageNeeds", (req, res) => {
-    res.render(CWD + '/frontend/views/manageNeeds')
+  router.get("/manageWishes", (req, res) => {
+    res.render(CWD + '/frontend/views/manageWishes')
   //  res.sendFile(CWD + "/frontend/views/manageNeeds.html");
   });
   router.get('/events', async(req, res) => {
     const events = await Event.getAll();
- 
+
     res.render(CWD + "/frontend/views/rsvpEvent", { events });
     //res.sendFile(CWD + '/frontend/views/rsvpEvent.html')
     // res.render(CWD + '/frontend/views/rsvpEvent')
@@ -37,13 +37,20 @@ router.get('/createEvent', (req, res) => {
 })
 
 
+router.get('/login', (req, res) => {
+    res.sendFile(CWD + '/frontend/views/login.html')
+})
+
 /*
     APIs
 */
 router.use("/api/users", require("./users"));
-router.use('/api/tutorials', require('./tutorials'));
-router.use("/api/wishes", require("./wishes"));
+router.use("/", require("./tutorials"));
+router.use('/api/wishes', require('./wishes'))
+router.use('/api/makeWishes', require('./wishes'))
+router.use("/api/manageWishes", require("./wishes"));
 router.use('/api/events', require('./events'))
+router.use('/api/auth', require('./auth')) // Used for creating new users
 
 module.exports = router;
 

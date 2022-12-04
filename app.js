@@ -19,6 +19,9 @@ const PORT = process.env.PORT || 8080
 app.set("view engine", "ejs");
 //app.set("views", path.join(__dirname, "./frontend/views"));
 // Setup view engine
+app.set("view-engine", "ejs");
+
+// Parse JSON requests into req.body
 app.use(express.json()) 
 app.use(express.urlencoded({ extended: false }));
 

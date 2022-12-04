@@ -1,10 +1,6 @@
-function autoFill(value) {
-    document.getElementById('wish-input').value = "I need " + value
-}
-
 const mapStatusToClassName = {
     'New': 'list-group-item-danger',
-    'In progress': 'list-group-item-warning',
+    'In Progress': 'list-group-item-warning',
     'Completed': 'list-group-item-success',
 }
 
@@ -66,4 +62,4 @@ const postWish = async () => {
       })
 }
 
-getWishesAndDisplay('Boe');
+// getWishesAndDisplay('Boe');

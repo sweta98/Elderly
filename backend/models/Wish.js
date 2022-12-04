@@ -24,8 +24,8 @@ class Wish {
     return Wish.db.updateWish(params, patch);
   }
 
-  static getAll() {
-    return Wish.db.getAllWishes();
+  static getAll(filter) {
+    return Wish.db.getAllWishes(filter);
   }
 
   static getResidentWishes(params) {
