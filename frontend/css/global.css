@@ -43,6 +43,7 @@
 body {
 
     background-image: url(../img/subtle-prism-bg.svg);
+    gap: 16px;
 }
 
 .selector-holder span{
