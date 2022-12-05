@@ -18,10 +18,9 @@
         rel="stylesheet" type="text/css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
-    
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/createEvent.css">
     <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
@@ -29,29 +28,10 @@
     <div id="create_event_header">
         <h1>Create Event</h1>
     </div>
+
 <!-- Success Modal -->
-<div class="modal fade" id="successModal" tabindex="-1" role="dialog"
-    aria-labelledby="successModal">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="successModalTitle">Success</h5>
-                <button type="button" class="close" data-dismiss="modal"
-                    aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Success!!!
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary"
-                    data-dismiss="modal"
-                    onclick="window.location.replace('/events')">Great!</button>
-            </div>
-        </div>
-    </div>
-</div>
+<%- include("./partials/successModal.ejs", {be_posted: "event", action: "created"}) %>
+
 
     <div class="container">
         <main>
@@ -60,7 +40,7 @@
                     <div class="col-sm-6 form-component ">
                         <label for="title" class="form-label heading-two">Event Title</label>
                         <input type="text" class="form-control text-socialworker"
-                            name="title" placeholder="" required>
+                            name="title" placeholder="Enter event title" required>
                         <div class="invalid-feedback">
                             Valid Event Title Is Required.
                         </div>
@@ -68,14 +48,14 @@
                     <div class="col-sm-6 form-component ">
                         <label for="description" class="form-label heading-two">Event Description</label>
                         <textarea type="text" class="form-control text-socialworker"
-                            name="description" placeholder="" value="" required></textarea>
+                            name="description" placeholder="Enter event description" value="" required></textarea>
                         <div class="invalid-feedback">
                             Valid Event Description Is Required.
                         </div>
                     </div>
                     <div class="col-sm-6 form-component ">
                         <label for="location" class="form-label heading-two">Location</label>
-                        <input type="text" class="form-control text-socialworker" name="location" placeholder=""
+                        <input type="text" class="form-control text-socialworker" placeholder="Enter event location" name="location" placeholder=""
                             required>
                         <div class="invalid-feedback">
                             Valid Event Location Is Required.
@@ -100,13 +80,13 @@
                         <div class="row">
                             <div class="col-sm w-50">
                                 <label for="start_time" class="form-label heading-two">Start Time</label>
-                                <input type="time" class="form-control text-socialworker" name="start_time" min="00:00"
+                                <input type="time" class="form-control text-socialworker" placeholder="Enter start time" name="start_time" min="00:00"
                                     max="24:00" required>
                             </div>
 
                             <div class="col-sm w-50">
                                 <label for="end_time" class="form-label heading-two">End Time</label>
-                                <input type="time" class="form-control text-socialworker" name="end_time" min="00:00"
+                                <input type="time" class="form-control text-socialworker" placeholder="Enter delete time" name="end_time" min="00:00"
                                     max="24:00" required>
                             </div>
                         </div>
@@ -114,7 +94,7 @@
                 
 
 
-                    <button class="w-100 btn btn-primary btn-lg submit-button"
+                    <button class="w-100 btn btn-lg submit-button"
                         type="submit">Create</button>
                 </div>
             </form>
@@ -124,6 +104,10 @@
     <script src="utils/http.js"></script>
     <script src="utils/api.js"></script>
     <script type="module" src="../utils/createEvent.js"></script>
+    <script>
+        document.querySelector("#events").classList.remove("button-inactive");
+        document.querySelector("#events").classList.add("button-active");
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

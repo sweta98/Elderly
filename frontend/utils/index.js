@@ -2,9 +2,9 @@ window.onload = function() {
   let currentRole = localStorage.getItem("role");
   let currentUsername = localStorage.getItem("username");
 
-  // avoid access the application through "/" without login
+  // avoid access the application without login
   if (currentRole === null || currentUsername === null) {
-    window.location.replace("/login");
+    window.location.replace("/");
   }
 
   if (currentRole === "resident") {
@@ -28,4 +28,8 @@ window.onload = function() {
     h2.appendChild(document.createTextNode(currentUsername));
     iconDiv.appendChild(h2);
   }
+}
+function goTo(){
+  const username = localStorage.getItem("username");
+  window.location.replace(`events/${username}`);
 }

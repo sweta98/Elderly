@@ -1,5 +1,6 @@
 a {
     font-size: 1.25rem;
+    cursor: pointer;
 }
 .container-fluid {
     padding: 5%;
@@ -11,10 +12,14 @@ a {
     padding-top: 10%;
 }
 .wish-bubble {
-    background-color: #C5D8D1;
+    background-color: var(--button-col-primary);
     border-radius: 10px;
     width: 200px;
     margin: 10px 0;
+}
+.wish-bubble:active, .wish-bubble:hover {
+    background-color: var( --button-col-active);
+    color: white;
 }
 .input-container {
     position: fixed;
@@ -33,7 +38,7 @@ a {
     font-size: 1.25rem;
 }
 #submit-btn {
-    min-width: 150px;
+    min-width: 200px;
     font-size: 1.25rem;
 }
 #microphone-container {
@@ -43,9 +48,14 @@ a {
     border-radius: 50px;
     line-height: 100px;
     margin: 0 auto;
+    cursor: pointer;
 }
 .btn {
     font-size: 1.25rem;
+}
+#submit-btn:active, #submit-btn:hover {
+    background-color: var( --button-col-active);
+    color: white;
 }
 .alert {
     position:absolute;

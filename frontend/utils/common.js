@@ -1,15 +1,11 @@
 function logout() {
   localStorage.clear();
-  window.location.replace("/login");
+  window.location.replace("/");
 }
 
 function home() {
   const type = localStorage.getItem("role");
-  if (type === "resident") {
-    window.location.replace("/");
-  } else {
-    window.location.replace("/");
-  }
+  window.location.replace("/home");
 }
 
 function wishboard() {
@@ -31,10 +27,6 @@ function tutorials() {
 }
 
 function events() {
-  const type = localStorage.getItem("role");
-  if (type === "resident") {
-    window.location.replace("/events");
-  } else {
-    window.location.replace("/createEvent");
-  }
+  const username = localStorage.getItem("username");
+  window.location.replace(`/events/${username}`); 
 }

@@ -3,3 +3,40 @@
     border-radius:30px !important;
 }
 
+#user-image-logo {
+    height: 100%;
+    width: 100%;
+    margin-top: 250px;
+}
+
+
+#role-container {
+    position: relative;
+    top: 40%;
+    transform: translateY(-70%);
+}
+
+#userinfo-container-logo {
+    position: relative;
+    margin-top: 70px;
+    transform: translateY(-50%);
+    background-color: #51A9BF;
+}
+
+.modal {
+    text-align: center;
+    padding: 0!important;
+}
+.modal:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -4px;
+}
+.modal-dialog {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+

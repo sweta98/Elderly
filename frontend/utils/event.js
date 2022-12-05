@@ -14,13 +14,19 @@ const fetchEvents = async () => {
   });
 };
 
+window.onload = () =>{
+  if (window.localStorage.getItem("role") == "staff"){
+      create_event_btn.style.display = "block";
+  } else{
+      create_event_btn.style.display = "none";
+  }
+}
 
 
-
-function update(eventId) {
+function update(eventId,rsvp) {
   let username = localStorage.getItem("username");
   console.log(eventId, username);
-  apiClient.updateEvent(eventId, username).then(async (httpRes) => {
+  apiClient.updateEvent(eventId, username,rsvp).then(async (httpRes) => {
     const status = httpRes.status;
     const res = await httpRes.json();
     if (status === 201) {
@@ -57,12 +63,5 @@ document.querySelector("#message-template").innerHTML;
 const create_event_btn = document.getElementById("create_event_btn")
 create_event_btn.onclick = () =>{
   window.location.replace("/createEvent");
-}
-window.onload = () =>{
-  if (window.localStorage.getItem("role") == "staff"){
-      create_event_btn.style.display = "block";
-  } else{
-      create_event_btn.style.display = "none";
-  }
 }
 

@@ -7,38 +7,34 @@ const Tutorial = require('../models/Tutorial')
     URLs
 */
 // home get example
-router.get("/", (req, res) => {
+
+router.get('/', (req, res) => {
+  res.render(CWD + '/frontend/views/login')
+})
+
+router.get("/home", (req, res) => {
   res.render(CWD + '/frontend/views/index')
- //   res.sendFile(CWD + "/frontend/views/index.html");
   });
   router.get("/manageWishes", (req, res) => {
     res.render(CWD + '/frontend/views/manageWishes')
-  //  res.sendFile(CWD + "/frontend/views/manageNeeds.html");
   });
-  router.get('/events', async(req, res) => {
+  router.get('/events/:username', async(req, res) => {
     const events = await Event.getAll();
-
-    res.render(CWD + "/frontend/views/rsvpEvent", { events });
-    //res.sendFile(CWD + '/frontend/views/rsvpEvent.html')
-    // res.render(CWD + '/frontend/views/rsvpEvent')
+    const username = req.params.username;
+    console.log(username);
+    res.render(CWD + "/frontend/views/rsvpEvent", { events,username });
 })
 
 router.get('/wishes', (req, res) => {
   res.render(CWD + '/frontend/views/wishboard')
-   // res.sendFile(CWD + '/frontend/views/wishboard.html')
 })
 
 router.get('/makeWishes', (req, res) => {
   res.render(CWD + '/frontend/views/makeWishes')
- //   res.sendFile(CWD + '/frontend/views/makeWishes.html')
 })
 
 router.get('/createEvent', (req, res) => {
   res.render(CWD + '/frontend/views/createEvent')
-})
-
-router.get('/login', (req, res) => {
-  res.render(CWD + '/frontend/views/login')
 })
 
 router.get("/tutorials", async (req, res) => { // for resident

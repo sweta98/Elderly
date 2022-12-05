@@ -87,10 +87,10 @@ body {
 }
 
 .btn {
-  background-color: #c5d8d1;
+  background-color: #51A9BF;
   font-style: normal;
   font-weight: 700;
-  color: #12263a;
+  color: white;
   text-align: center;
   border: 0;
   border-radius: 15px;
@@ -100,7 +100,7 @@ body {
 .selectors button:hover,
 .selectors button:active,
 .selectors button:focus {
-  color: #697821;
+  color:var( --button-col-active);
 }
 
 .button-inactive {
@@ -115,7 +115,7 @@ body {
 
 .btn-group-vertical.center button:active,
 .btn-group-vertical.center button:hover {
-  background-color: #697821;
+  background-color: var( --button-col-active);
   color: white;
 }
 
@@ -166,4 +166,5 @@ background-color:#FEFFC0 ;
 
 #new-btn, #progress-btn, #completed-btn {
   background-color: white;
+  color: black;
 }
