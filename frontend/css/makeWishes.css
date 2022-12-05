@@ -8,8 +8,8 @@ a {
     font-size: 1.25rem;
 }
 .wish-bubbles-container {
-    height: 100%;
     padding-top: 10%;
+    overflow: auto;
 }
 .wish-bubble {
     background-color: var(--button-col-primary);
