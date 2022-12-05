@@ -50,6 +50,15 @@ class ApiClient {
   disableTutorial = (url, body) => {
     return this.httpClient.patchJsonToApi(url, body);
   };
+
+  updateOnlineStatus = (url, body) => {
+      return this.httpClient.patchJsonToApi(url, body);
+  };
+
+  updateOfflineStatus = (url, body) => {
+      return this.httpClient.patchJsonToApi(url, body);
+  };
+
 }
 
 const apiClient = new ApiClient();

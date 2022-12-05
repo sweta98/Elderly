@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const encryptor = require('../controllers/encryptor')
-const DBURL = "mongodb+srv://sridelderly:18658svgenie@maincluster.ovf8aqy.mongodb.net/?retryWrites=true&w=majority"
+const DBURL = "mongodb://localhost:27017"
 const  ObjectId = require('mongodb').ObjectId;
 
 class DBMongo {
@@ -118,9 +118,17 @@ class DBMongo {
             })
     }
 
-    getAllUser() {
-        return this.User.find({active: true})
-            .select("-password")
+    getAllUserResident() {
+        return this.User.find({role: "resident", online: false})
+            .then(users => {
+                return users;
+            }).catch(err => {
+                throw err;
+            })
+    }
+
+    getAllUserStaff() {
+        return this.User.find({role: "staff", online: false})
             .then(users => {
                 return users;
             }).catch(err => {

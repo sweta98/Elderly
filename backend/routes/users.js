@@ -51,8 +51,10 @@ router.get('/:username/online', async (req, res) =>{
 
 router.patch('/:username/online', async (req, res) =>{
     try{
-        let user = await User.updateOnline(req.params.username);
-        res.json(user)
+        let username = await User.updateOnline(req.params.username);
+        var io = req.app.get('socketio');
+        io.emit("online", username);
+        res.json(username);
     } catch(err){
         res.status(500).json({message:err.message});
     }
@@ -61,6 +63,8 @@ router.patch('/:username/online', async (req, res) =>{
 router.patch('/:username/offline', async (req, res) =>{
     try{
         let user = await User.updateOffline(req.params.username);
+        var io = req.app.get('socketio');
+        io.emit("offline", username);
         res.json(user)
     } catch(err){
         res.status(500).json({message:err.message});
