@@ -36,14 +36,6 @@ body {
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 }
 
-
-#userinfo-container {
-    position: relative;
-    top:30%;
-    transform:translateY(-50%);
-
-}
-
 #home-buttons-container{
     position: relative;
     top:40%;
