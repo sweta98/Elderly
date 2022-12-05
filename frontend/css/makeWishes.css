@@ -6,6 +6,7 @@ a {
     padding: 5%;
     justify-content: center;
     font-size: 1.25rem;
+    overflow: auto;
 }
 .wish-bubbles-container {
     padding-top: 10%;
