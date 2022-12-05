@@ -3,6 +3,7 @@ a{
 }
 .container-fluid {
     text-align: center;
+    overflow: auto;
 }
 .wishboard-container {
     margin: 50px auto;

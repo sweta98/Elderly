@@ -3,9 +3,7 @@ html {
     min-height: 100%;
 }
 
-body {
-    margin-bottom: 80px;
-    margin-top: 60px;
+body { 
     font-family: 'Open Sans';
     background-color: #f6fff9;
 }
@@ -13,11 +11,12 @@ body {
 .container-fluid {
     text-align: center;
     height: 80vh;
+    overflow: auto;
 }
 
 .container-fluid-logo {
     text-align: center;
-    
+    overflow: auto;
 }
 
 .footer {
