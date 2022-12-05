@@ -84,7 +84,10 @@
 
   <%- include("./partials/footer.ejs") %>
 
-
+<script>
+  document.querySelector("#wishboard").classList.remove("button-inactive");
+  document.querySelector("#wishboard").classList.add("button-active");
+</script>
 <script src="../utils/http.js"></script>
 <script src="../utils/api.js"></script>
 <script src="../utils/makeWish.js"></script>
