@@ -52,7 +52,7 @@
     </div>
   
   <!-- Success Modal -->
-  <%- include("./partials/successModal.ejs", {be_posted: "wish", redirect_to: '/wishes' }) %>
+  <%- include("./partials/successModal.ejs", {be_posted: "wish", action: "posted" }) %>
 
   <!-- Recording Modal -->
   <div class="modal fade" id="recordingModal" tabindex="-1" role="dialog" aria-labelledby="recordingModal" aria-hidden="true">
@@ -84,7 +84,10 @@
 
   <%- include("./partials/footer.ejs") %>
 
-
+<script>
+  document.querySelector("#wishboard").classList.remove("button-inactive");
+  document.querySelector("#wishboard").classList.add("button-active");
+</script>
 <script src="../utils/http.js"></script>
 <script src="../utils/api.js"></script>
 <script src="../utils/makeWish.js"></script>

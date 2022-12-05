@@ -49,8 +49,12 @@ a{
 }
 #make-wish-btn {
     min-height: 50px;
-    min-width: 150px;
+    min-width: 200px;
     font-size: 1.25rem;
+}
+#make-wish-btn:active, #make-wish-btn:hover {
+    background-color: var( --button-col-active);
+    color: white;
 }
 .card-body {
     font-size: 1.25rem;

@@ -18,9 +18,11 @@ router.get("/home", (req, res) => {
   router.get("/manageWishes", (req, res) => {
     res.render(CWD + '/frontend/views/manageWishes')
   });
-  router.get('/events', async(req, res) => {
+  router.get('/events/:username', async(req, res) => {
     const events = await Event.getAll();
-    res.render(CWD + "/frontend/views/rsvpEvent", { events });
+    const username = req.params.username;
+    console.log(username);
+    res.render(CWD + "/frontend/views/rsvpEvent", { events,username });
 })
 
 router.get('/wishes', (req, res) => {

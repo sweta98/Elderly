@@ -29,3 +29,7 @@ window.onload = function() {
     iconDiv.appendChild(h2);
   }
 }
+function goTo(){
+  const username = localStorage.getItem("username");
+  window.location.replace(`events/${username}`);
+}
