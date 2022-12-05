@@ -46,8 +46,12 @@ router.put("/:username/:content", async (req, res) => {
 /* Create a new wish */
 router.post("/", async (req, res) => {
   try {
-    let wish = await Wish.save(req.body);
-    res.json(wish);
+    let wish = await Wish.save(req.body).then((event) => {
+      //Socket
+    var io = req.app.get('socketio')
+    io.emit("postWish", event)
+    res.status(200).json(event);
+    });
   } catch (err) {
     handleError(err, res, 500);
   }
