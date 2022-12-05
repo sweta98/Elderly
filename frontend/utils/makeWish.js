@@ -30,7 +30,9 @@ const displayWishes = (wishes) => {
         "Completed": 10,
     }
     wishes.sort((a, b) => {
-        return mapStatusToValue[a.status] - mapStatusToValue[b.status]
+        var sortByTime = new Date(b.timestamp) - new Date(a.timestamp)
+        var sortByStatus = mapStatusToValue[a.status] - mapStatusToValue[b.status];
+        return (sortByStatus === 0) ? sortByTime: sortByStatus
     });
 
     for (let i = 0; i < wishes.length; i++) {
@@ -39,7 +41,7 @@ const displayWishes = (wishes) => {
                         `
                         <div class="card">
                             <div class="card-header ${mapStatusToClassName[wishes[i].status]}">
-                                <div class="d-flex justify-content-between" data-toggle="collapse" data-target="#collapse${i}">
+                                <div class="d-flex justify-content-between" data-toggle="collapse">
                                     <a class="wish-item-time">${date.toLocaleDateString("en-US")}</a>
                                     <a class="wish-item-status">${wishes[i].status}</a>
                                 </div>
