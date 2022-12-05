@@ -11,6 +11,9 @@
     --text_social_worker: 1rem;
     --button-col-primary: #51A9BF;
     --button-col-active: #004864;
+    --button-new : rgb(222, 77, 77);
+    --button-complete: hsl(176, 94%, 32%);
+    --button-progress: hsl(36, 73%, 59%);
 }
 
 .heading-one {

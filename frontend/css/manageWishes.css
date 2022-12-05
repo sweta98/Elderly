@@ -153,15 +153,18 @@ table {
   padding-top: 10px;
 }
 .card-header-new{
-  background-color: #FFCECE;
+  background-color: var(--button-new );
+  color: white;
 }
 
 .card-header-progress {
-background-color:#FEFFC0 ;
+background-color: var(--button-progress ); 
+color: white;
 }
 
 .card-header-comp {
-  background-color: #ABFFB8;
+  background-color: var(--button-complete );
+  color: white;
 }
 
 #new-btn, #progress-btn, #completed-btn {
