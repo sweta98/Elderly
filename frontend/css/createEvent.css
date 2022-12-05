@@ -16,19 +16,24 @@
 }
 
 .datepicker {
-    background-color: #f8f9fa;
+    background-color: var(--tertiary-grey);
     font-size: var(--text-socialworker);
     margin-top: 60px;
 }
 
 .datepicker table tr td.active.active {
-    background-color: #C5D8D1;
+    background-color: var(--primary-color);
 }
 
 .datepicker .next{
-    background-color: #C5D8D1;
+    background-color: var(--primary-color);
 }
 
 .datepicker .prev {
-    background-color: #C5D8D1;
+    background-color: var(--primary-color);
+}
+
+input[type='time']::-webkit-calendar-picker-indicator {
+    background: none;
+    display: none;
 }

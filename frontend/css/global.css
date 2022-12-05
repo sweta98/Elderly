@@ -9,6 +9,15 @@
     --heading_two: 1.5rem;
     --text_senior: 1.25rem;
     --text_social_worker: 1rem;
+
+    --primary-color: #51A9BF;
+    --secondary-color: #004864;
+    /* --tertiary-color: */
+
+    --primary-grey: #767575;
+    --secondary-grey: #B1B1B1;
+    --tertiary-grey: #E4E4E4;
+
     --button-col-primary: #51A9BF;
     --button-col-active: #004864;
 }
