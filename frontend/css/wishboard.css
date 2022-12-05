@@ -3,7 +3,8 @@ a{
 }
 .container-fluid {
     text-align: center;
-    overflow: auto;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 .wishboard-container {
     margin: 50px auto;
@@ -11,7 +12,8 @@ a{
 .wishes-container {
     height: 55vh;
     max-height: 500px;
-    overflow: auto;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 .wish-in-progress {
     background-color: #FEFFC0;

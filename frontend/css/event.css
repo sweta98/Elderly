@@ -12,7 +12,8 @@ body {
 
 .container-fluid {
     text-align: center;
-    overflow: auto;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
 
 }
 
