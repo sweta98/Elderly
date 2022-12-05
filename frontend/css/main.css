@@ -3,9 +3,7 @@ html {
     min-height: 100%;
 }
 
-body {
-    margin-bottom: 80px;
- 
+body { 
     font-family: 'Open Sans';
     background-color: #f6fff9;
 }

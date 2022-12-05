@@ -35,6 +35,11 @@ const displayWishes = (wishes) => {
         return (sortByStatus === 0) ? sortByTime: sortByStatus
     });
 
+    if (wishes.length === 0) {
+        document.querySelector(".wishes-container").innerHTML = "<a style='color: grey'>You don't have any wish yet</a>";
+        return
+    }
+
     for (let i = 0; i < wishes.length; i++) {
         date = new Date(wishes[i].timestamp)
         displayHTML = displayHTML +
