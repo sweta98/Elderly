@@ -12,14 +12,16 @@ body {
 .container-fluid {
     text-align: center;
     height: 80vh;
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
+    overflow: auto;
+    /* overflow: scroll;
+    -webkit-overflow-scrolling: touch; */
 }
 
 .container-fluid-logo {
     text-align: center;
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
+    overflow: auto;
+    /* overflow: scroll;
+    -webkit-overflow-scrolling: touch; */
 }
 
 .footer {
