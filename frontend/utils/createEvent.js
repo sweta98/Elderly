@@ -8,6 +8,7 @@ var options={
   minDate: 0,
 };
 let event_form = document.getElementById("event_form");
+let username = window.localStorage.getItem("username");
 
 function getData(form) {
   var formData = new FormData(form);
@@ -44,6 +45,9 @@ const submitEvent = async(e) => {
   let res = await apiClient.createEvent(post_body);
   if (res.ok) {
         $("#successModal").modal("show");
+        document.getElementById("great").onclick = () =>{
+          window.location.replace(`/events/${username}`)
+        }
     }
 
 }
@@ -51,11 +55,13 @@ const submitEvent = async(e) => {
 //submit form  
 event_form.addEventListener("submit", submitEvent);
 
+
 //calendar
 date_input.datepicker(options)
 
-// window.onload = () =>{
-//   if (window.localStorage.getItem("role") != "staff" || ! window.localStorage.getItem("username")){
-//       window.location.replace("/");
-//   }
-// }
+window.onload = () =>{
+  if (window.localStorage.getItem("role") != "staff" || !username){
+      window.location.replace("/");
+  }
+}
+
