@@ -31,5 +31,6 @@ function tutorials() {
 }
 
 function events() {
-  window.location.replace("/events");
+  const username = localStorage.getItem("username");
+  window.location.replace(`events/${username}`); 
 }
