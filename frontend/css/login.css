@@ -12,13 +12,13 @@
 
 #role-container {
     position: relative;
-    top: 40%;
+    top: 20%;
     transform: translateY(-70%);
 }
 
 #userinfo-container-logo {
     position: relative;
-    margin-top: 70px;
+    margin-top: 90px;
     transform: translateY(-50%);
     background-color: #51A9BF;
 }

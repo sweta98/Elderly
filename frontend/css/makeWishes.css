@@ -6,10 +6,13 @@ a {
     padding: 5%;
     justify-content: center;
     font-size: 1.25rem;
+    overflow: auto;
 }
 .wish-bubbles-container {
     padding-top: 10%;
     overflow: auto;
+    /* overflow: scroll;
+    -webkit-overflow-scrolling: touch; */
 }
 .wish-bubble {
     background-color: var(--button-col-primary);

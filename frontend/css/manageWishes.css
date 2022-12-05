@@ -28,7 +28,8 @@ body {
 
 .container-fluid {
   text-align: center;
-  height: 50vh;
+  height: 80vh;
+  overflow: auto;
 }
 
 #userinfo-container {
@@ -153,18 +154,26 @@ table {
   padding-top: 10px;
 }
 .card-header-new{
-  background-color: #FFCECE;
+  background-color: rgb(222, 77, 77);
+  color: white;
 }
 
 .card-header-progress {
-background-color:#FEFFC0 ;
+background-color:hsl(36, 73%, 59%);
+color: white;
 }
 
 .card-header-comp {
-  background-color: #ABFFB8;
+  background-color: hsl(176, 94%, 32%);
+  color: white;
 }
 
 #new-btn, #progress-btn, #completed-btn {
   background-color: white;
   color: black;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
 }
