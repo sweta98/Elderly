@@ -3,9 +3,9 @@ function autoFill(value) {
 }
 
 const mapStatusToClassName = {
-    'New': 'list-group-item-danger',
-    'In Progress': 'list-group-item-warning',
-    'Completed': 'list-group-item-success',
+    "New": "--button-new",
+    "In Progress": "--button-progress",
+    "Completed": "--button-complete",
 }
 
 
@@ -40,10 +40,10 @@ const displayWishes = (wishes) => {
         displayHTML = displayHTML +
                         `
                         <div class="card">
-                            <div class="card-header ${mapStatusToClassName[wishes[i].status]}">
+                            <div class="card-header" style="background-color: var(${mapStatusToClassName[wishes[i].status]})">
                                 <div class="d-flex justify-content-between" data-toggle="collapse">
-                                    <a class="wish-item-time">${date.toLocaleDateString("en-US")}</a>
-                                    <a class="wish-item-status">${wishes[i].status}</a>
+                                    <a class="wish-item-time" style="color:white">${date.toLocaleDateString("en-US")}</a>
+                                    <a class="wish-item-status" style="color:white">${wishes[i].status}</a>
                                 </div>
                             </div>
                     
