@@ -84,3 +84,10 @@ const socket = io('/');
 socket.on('updateWish', data => {
     getWishesAndDisplay(localStorage.getItem("username"));
 })
+
+$("#wish-bubbles-container").height(document.body.scrollHeight - 100 - $(".input-container").height())
+
+$(window).resize(function(){
+    $("#wish-bubbles-container").height(document.body.scrollHeight - 100 - $(".input-container").height())
+});
+  
