@@ -74,6 +74,9 @@ const postWish = async () => {
         const res = await httpRes.json();
         if (status === 200) {
             $("#successModal").modal("show");
+            document.getElementById("great").onclick = () =>{
+                window.location.replace(`/wishes`);
+              }
             return res;
         }
       })

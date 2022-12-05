@@ -123,3 +123,8 @@ body {
     max-height: 200px;
     max-width: 200px;
 }
+#events-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-top: 10px;
+}
