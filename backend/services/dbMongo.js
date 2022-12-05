@@ -94,11 +94,23 @@ class DBMongo {
             })
     }
 
-    updateUserByUsername(username, patch) {
+    updateOnlineByUsername(username) {
         return this.User.findOneAndUpdate(
-            { username: username , active:true}, { $set: patch }, { new: true }
+            { username: username}, { $set: { online: true }}
         )
-            .select("-password")
+            .select("username")
+            .then(user => {
+                return user;
+            }).catch(err => {
+                throw err;
+            })
+    }
+
+    updateOfflineByUsername(username) {
+        return this.User.findOneAndUpdate(
+            { username: username}, { $set: { online: false }}
+        )
+            .select("username")
             .then(user => {
                 return user;
             }).catch(err => {

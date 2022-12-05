@@ -60,8 +60,12 @@ class User {
         return User.db.findUserByUsername(username);
     }
 
-    static update(username, patch){
-        return User.db.updateUserByUsername(username, patch);
+    static updateOnline(username){
+        return User.db.updateOnlineByUsername(username);
+    }
+
+    static updateOffline(username){
+        return User.db.updateOfflineByUsername(username);
     }
 
     static getAll() {

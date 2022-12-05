@@ -3,6 +3,9 @@ var username = "";
 function loginAsResident(username){
   localStorage.setItem("username", username);
   localStorage.setItem("role", "resident");
+
+  let res = apiClient.httpClient.getJsonFromApi("users/" + username + "/online");
+
   window.location.replace("/home");
 }
 
