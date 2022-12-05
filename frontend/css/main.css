@@ -39,11 +39,16 @@ body {
 
 #userinfo-container {
     position: relative;
+    top:30%;
+    transform:translateY(-50%);
+
+}
+#userinfo-container-logo {
+    position: relative;
     margin-top: 70px;
     transform:translateY(-50%);
     background-color: #51A9BF;
 }
-
 #home-buttons-container{
     position: relative;
     top:40%;
