@@ -17,8 +17,11 @@
 
     <%- include("./partials/header.ejs") %>
    
-
+    <div id="events-header">
+        <h1>Upcoming Events</h1>
+    </div>
     <div class="container-fluid ">
+
         <button class="btn btn-lg btn-block" type="button" id="create_event_btn" style="display: block;">
             Create Event
           </button>
@@ -36,7 +39,7 @@
               </button>
               <% if(events[i].rsvp.includes(username)) { %>
               <button class="btn" type="button" onclick="update('<%= events[i]._id %>', false)">
-                Not Attending
+                Cancel RSVP
               </button>
               <% } %>
               <% if(!events[i].rsvp.includes(username)) { %>
@@ -55,8 +58,8 @@
 </div>
 <% } %>
   </div>
-  <%- include("./partials/successModal.ejs", {be_posted: "event", action: "reserved" }) %>
-   
+  <%- include("./partials/successModalEvents.ejs", {be_posted: "You have successfully RSVP'd for th event!", action: "RSVP" }) %>
+   <%- include("./partials/successModalEventsRSVP.ejs", {be_posted: "You have successfully cancelled your RSVP for the event!", action: "Cancel RSVP" }) %>
 <%- include("./partials/footer.ejs") %>
 
 
