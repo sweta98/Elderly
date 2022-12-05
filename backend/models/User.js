@@ -68,8 +68,12 @@ class User {
         return User.db.updateOfflineByUsername(username);
     }
 
-    static getAll() {
-        return User.db.getAllUser();
+    static getAllResident() {
+        return User.db.getAllUserResident();
+    }
+
+    static getAllStaff() {
+        return User.db.getAllUserStaff();
     }
 
     static delAll() {

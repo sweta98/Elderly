@@ -3,13 +3,22 @@ const router = express.Router()
 const CWD = process.env.INIT_CWD
 const Event = require('../models/Event')
 const Tutorial = require('../models/Tutorial')
+const {handleError} = require("../controllers/errorHandler");
+const User = require('../models/User')
 /*
     URLs
 */
 // home get example
 
-router.get('/', (req, res) => {
-  res.render(CWD + '/frontend/views/login')
+router.get('/', async (req, res) => {
+  // res.render(CWD + '/frontend/views/login')
+  try{
+    const residentAccounts = await User.getAllResident();
+    const staffAccounts = await User.getAllStaff();
+    res.render(CWD + '/frontend/views/login', { residentAccounts: residentAccounts, staffAccounts: staffAccounts})
+  }catch(err){
+    handleError(err, res, 500);
+  }
 })
 
 router.get("/home", (req, res) => {

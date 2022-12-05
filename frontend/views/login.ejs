@@ -47,12 +47,9 @@
                 </div>
                 <div class="modal-body">
                     <div class="btn-group-vertical center">
-                        <button type="button" class="btn btn-secondary btn-lg" onclick="loginAsResident('Ashley')">Ashley</button>
-                        <button type="button" class="btn btn-secondary btn-lg" onclick="loginAsResident('Boe')">Boe</button>
-                        <button type="button" class="btn btn-secondary btn-lg" onclick="loginAsResident('Carey')">Carey</button>
-                        <button type="button" class="btn btn-secondary btn-lg" onclick="loginAsResident('Dakota')">Dakota</button>
-                        <button type="button" class="btn btn-secondary btn-lg" onclick="loginAsResident('Ellis')">Ellis</button>
-                        <button type="button" class="btn btn-secondary btn-lg" onclick="loginAsResident('Flynn')">Flynn</button>
+                        <% residentAccounts.forEach(function(residentAccount){ %>
+                            <button type="button" class="btn btn-secondary btn-lg" onclick="loginAsResident('<%= residentAccount.username %>')"><%= residentAccount.username %></button>
+                        <% }) %>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -72,8 +69,9 @@
                 </div>
                 <div class="modal-body">
                     <div class="btn-group-vertical center">
-                        <button type="button" class="btn btn-secondary btn-lg" onclick="loginAsStaff('Kelly')">Kelly</button>
-                        <button type="button" class="btn btn-secondary btn-lg" onclick="loginAsStaff('Jelly')">Jelly</button>
+                        <% staffAccounts.forEach(function(staffAccount){ %>
+                            <button type="button" class="btn btn-secondary btn-lg" onclick="loginAsStaff('<%= staffAccount.username %>')"><%= staffAccount.username %></button>
+                        <% }) %>
                     </div>
                 </div>
                 <div class="modal-footer">
