@@ -15,10 +15,11 @@ router.get("/", (req, res) => {
     res.render(CWD + '/frontend/views/manageWishes')
   //  res.sendFile(CWD + "/frontend/views/manageNeeds.html");
   });
-  router.get('/events', async(req, res) => {
+  router.get('/events/:username', async(req, res) => {
     const events = await Event.getAll();
-
-    res.render(CWD + "/frontend/views/rsvpEvent", { events });
+const username = req.params.username;
+console.log(username);
+    res.render(CWD + "/frontend/views/rsvpEvent", { events,username });
     //res.sendFile(CWD + '/frontend/views/rsvpEvent.html')
     // res.render(CWD + '/frontend/views/rsvpEvent')
 })

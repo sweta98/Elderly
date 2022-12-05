@@ -23,10 +23,10 @@ window.onload = () =>{
 }
 
 
-function update(eventId) {
+function update(eventId,rsvp) {
   let username = localStorage.getItem("username");
   console.log(eventId, username);
-  apiClient.updateEvent(eventId, username).then(async (httpRes) => {
+  apiClient.updateEvent(eventId, username,rsvp).then(async (httpRes) => {
     const status = httpRes.status;
     const res = await httpRes.json();
     if (status === 201) {
