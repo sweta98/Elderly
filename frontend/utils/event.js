@@ -30,7 +30,14 @@ function update(eventId,rsvp) {
     const status = httpRes.status;
     const res = await httpRes.json();
     if (status === 201) {
-      $("#successModal").modal("show");
+      if(rsvp)
+      {
+        $("#successModalRSVP").modal("show");
+      }
+      else {
+        $("#successModalNoRSVP").modal("show");
+      }
+      
       console.log(res);
     }
   }
