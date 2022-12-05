@@ -43,12 +43,7 @@ body {
     transform:translateY(-50%);
 
 }
-#userinfo-container-logo {
-    position: relative;
-    margin-top: 70px;
-    transform:translateY(-50%);
-    background-color: #51A9BF;
-}
+
 #home-buttons-container{
     position: relative;
     top:40%;
@@ -135,9 +130,4 @@ body {
     width: 40%;
     max-height: 200px;
     max-width: 200px;
-}
-#user-image-logo {
-    height: 100%;
-    width: 100%;
-    margin-top: 180px;
 }

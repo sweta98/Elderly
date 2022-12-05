@@ -21,10 +21,20 @@
 <!--    </h2>-->
 <!--</nav>-->
 <div class="container-fluid-logo">
-    <div id="logo-container">
-        <img id="logo-image" src="img/blue_logo.png">
-        <!-- <h3>Welcome to Facility Genie!</h3>
-            <p>Your one-stop solution to quality assisted living!</p> -->
+    <div id="userinfo-container-logo">
+        <img id="user-image-logo" src="img/blue_logo.png">
+    </div>
+    <div id="role-container">
+        <div class="btn-group-vertical center">
+            <button id="btnGroupRoleResident" type="button"
+                class="btn btn-lg btn-block" data-toggle="modal"
+                data-target="#roleResidentModal">I'm a Resident</button>
+        </div>
+        <div class="btn-group-vertical center">
+            <button id="btnGroupRoleStaff" type="button"
+                class="btn btn-lg btn-block" data-toggle="modal"
+                data-target="#roleStaffModal">I'm a Staff</button>
+        </div>
     </div>
     <div class="modal fade" id="roleResidentModal" tabindex="-1" role="dialog" aria-labelledby="roleResidentModalTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -70,14 +80,6 @@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
-        </div>
-    </div>
-    <div id="home-buttons-container">
-        <div class="btn-group-vertical center">
-            <button id="btnGroupRoleResident" type="button" class="btn btn-lg btn-block" data-toggle="modal" data-target="#roleResidentModal">I'm a Resident</button>
-        </div>
-        <div class="btn-group-vertical center">
-            <button id="btnGroupRoleStaff" type="button" class="btn btn-lg btn-block" data-toggle="modal" data-target="#roleStaffModal">I'm a Staff</button>
         </div>
     </div>
 
