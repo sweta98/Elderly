@@ -19,7 +19,7 @@ npm install
 ## Usage
 
 ```python
-npm run dev
+npm start
 
 ```
 
