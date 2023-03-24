@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const encryptor = require('../controllers/encryptor')
-const DBURL = "mongodb+srv://sridelderly:18658svgenie@maincluster.ovf8aqy.mongodb.net/?retryWrites=true&w=majority"
+const DBURL = "mongodb+srv://skabi:v9HUgelsSKJx4TZ3@cluster1.as6udwp.mongodb.net/?retryWrites=true&w=majority"
+
 const  ObjectId = require('mongodb').ObjectId;
 
 class DBMongo {
